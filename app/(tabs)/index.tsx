@@ -16,9 +16,9 @@ import Svg, { Path, Circle } from 'react-native-svg';
 const HomeScreen = () => {
   const categories = [
     { id: 1, name: 'Nigiri', image: require('../../assets/images/nigiri.png') },
-    { id: 2, name: 'Sashimi', image: require('../../assets/images/nigiri.png') },
-    { id: 3, name: 'Bento', image: require('../../assets/images/nigiri.png') },
-    { id: 4, name: 'Maki', image: require('../../assets/images/nigiri.png') },
+    { id: 2, name: 'Sashimi', image: require('../../assets/images/sashimi.png') },
+    { id: 3, name: 'Bento', image: require('../../assets/images/bento.png') },
+    { id: 4, name: 'Maki', image: require('../../assets/images/maki.png') },
   ];
 
   const sushiItems = [
@@ -111,7 +111,7 @@ const HomeScreen = () => {
                   </TouchableOpacity>
                 </View>
                 <View style={styles.sushiMeta}>
-                  <Ionicons name="star" size={12} color="#FF8A00" />
+                  <Ionicons name="star" size={14} color="#FF593C" />
                   <Text style={styles.rating}>{item.rating}</Text>
                   <Text style={styles.separator}>·</Text>
                   <Text style={styles.time}>{item.time}</Text>
@@ -123,11 +123,14 @@ const HomeScreen = () => {
       </ScrollView>
 
       {/* Fixed Top Bar with Blur */}
-      <BlurView intensity={80} tint="light" style={styles.topBarContainer}>
+      <BlurView intensity={80} style={styles.topBarContainer}>
         <View style={styles.topBar}>
           {/* Delivery Address */}
           <View style={styles.deliverySection}>
-            <Ionicons name="location-outline" size={20} color="#1C1C1E" />
+            <TouchableOpacity style={styles.notificationButton}>
+              <Ionicons name="location-outline" size={20} color="#1C1C1E" />
+            </TouchableOpacity>
+            
             <View style={styles.addressContainer}>
               <Text style={styles.deliveryLabel}>Deliver now</Text>
               <View style={styles.addressRow}>
@@ -145,16 +148,16 @@ const HomeScreen = () => {
             <Ionicons
               name="search"
               size={20}
-              color="#9CA3AF"
+              color="#1C1C1E"
               style={styles.searchIcon}
             />
             <TextInput
               style={styles.searchInput}
               placeholder="Search sushi, rolls, sashimi..."
-              placeholderTextColor="#9CA3AF"
+              placeholderTextColor="#8E8E93"
             />
             <TouchableOpacity style={styles.voiceButton}>
-              <Ionicons name="mic-outline" size={20} color="#9CA3AF" />
+              <Ionicons name="mic-outline" size={20} color="#8E8E93" />
             </TouchableOpacity>
           </View>
         </View>
@@ -186,7 +189,7 @@ const styles = StyleSheet.create({
   },
   topBar: {
     paddingHorizontal: 20,
-    paddingBottom: 16,
+    paddingBottom: 20,
     backgroundColor: '#fffdfe',
   },
   deliverySection: {
@@ -214,15 +217,33 @@ const styles = StyleSheet.create({
     marginRight: 4,
   },
   notificationButton: {
-    padding: 4,
+    padding: 10,
+    backgroundColor: "#FFFFFF",
+    borderRadius: 50,
+    shadowColor: 'rgb(0, 0, 0, 0.3)',
+    shadowOffset: {
+        width: 0,
+        height: 4, // move shadow down
+    },
+    shadowOpacity: 0.1,  // control transparency
+    shadowRadius: 16,    // 👈 this is your blur
+    elevation: 8, 
   },
   searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F3F4F6',
-    borderRadius: 12,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 50,
     paddingHorizontal: 12,
     height: 48,
+    shadowColor: 'rgb(0, 0, 0, 0.3)',
+    shadowOffset: {
+        width: 0,
+        height: 4, // move shadow down
+    },
+    shadowOpacity: 0.1,  // control transparency
+    shadowRadius: 16,    // 👈 this is your blur
+    elevation: 8, 
   },
   searchIcon: {
     marginRight: 8,
@@ -230,7 +251,7 @@ const styles = StyleSheet.create({
   searchInput: {
     flex: 1,
     fontSize: 15,
-    color: '#1C1C1E',
+    color: '#8E8E93',
   },
   voiceButton: {
     padding: 4,
@@ -243,19 +264,28 @@ const styles = StyleSheet.create({
   },
   categoryItem: {
     alignItems: 'center',
+    paddingHorizontal: 19,
+    paddingVertical: 6,
+    borderRadius: 16,
+    backgroundColor: '#FFFFFF',
+    shadowColor: 'rgb(0, 0, 0, 0.3)',
+    shadowOffset: {
+        width: 0,
+        height: 4, // move shadow down
+    },
+    shadowOpacity: 0.1,  // control transparency
+    shadowRadius: 16,    // 👈 this is your blur
+    elevation: 16,
   },
   categoryImageContainer: {
-    width: 64,
-    height: 64,
-    borderRadius: 32,
-    backgroundColor: '#FFF5F0',
+    width: 30,
+    height: 30,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 8,
   },
   categoryImage: {
-    width: 40,
-    height: 40,
+    width: '100%',
+    height: '100%',
     resizeMode: 'contain',
   },
   categoryText: {
@@ -284,13 +314,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     paddingHorizontal: 12,
-    rowGap: 12,
+    gap: 12
   },
   sushiCard: {
-    width: '50%',
-    paddingHorizontal: 8,
+    width: 161,
+    padding: 12,
+    flexDirection: 'column',
+    gap: 8,
     backgroundColor: '#FFFFFF',
-    marginBottom: 24,
     borderRadius: 16,
     shadowColor: 'rgb(0, 0, 0, 0.3)',
     shadowOffset: {
@@ -302,11 +333,10 @@ const styles = StyleSheet.create({
     elevation: 16, 
   },
   imageContainer: {
-    padding: 12,
-    marginBottom: 12,
+    width: 137,
     alignItems: 'center',
     justifyContent: 'center',
-    height: 140,
+    height: 112,
   },
   sushiImage: {
     width: '100%',
