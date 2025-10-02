@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     backgroundColor: "#fff",
     paddingBottom: 10,
+    paddingHorizontal: 20,
     overflow: "hidden",
     shadowColor: 'rgb(0, 0, 0, 0.3)',
     shadowOffset: {
