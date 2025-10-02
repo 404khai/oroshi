@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'expo-router';
 import {
   View,
   Text,
@@ -68,6 +69,8 @@ const HomeScreen = () => {
     </Svg>
   );
 
+  const router = useRouter();
+
   return (
     <View style={styles.container}>
       {/* Scrollable Content */}
@@ -135,10 +138,10 @@ const HomeScreen = () => {
               <Text style={styles.deliveryLabel}>Deliver now</Text>
               <View style={styles.addressRow}>
                 <Text style={styles.addressText}>123 Tokyo Lane</Text>
-                <Ionicons name="chevron-down" size={16} color="#1C1C1E" />
+                <Ionicons name="chevron-down" size={16} color="#828282" />
               </View>
             </View>
-            <TouchableOpacity style={styles.notificationButton}>
+            <TouchableOpacity style={styles.notificationButton} onPress={() => router.push("/screens/notifications")}>
               <NotificationIcon />
             </TouchableOpacity>
           </View>
@@ -175,7 +178,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
-    paddingTop: Platform.OS === 'ios' ? 180 : 160,
+    paddingTop: Platform.OS === 'ios' ? 180 : 180,
     paddingBottom: 24,
   },
   topBarContainer: {
@@ -189,6 +192,7 @@ const styles = StyleSheet.create({
   },
   topBar: {
     paddingHorizontal: 20,
+    paddingVertical: 20,
     paddingBottom: 20,
     backgroundColor: '#fffdfe',
   },
@@ -202,8 +206,8 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
   deliveryLabel: {
-    fontSize: 12,
-    color: '#6B7280',
+    fontSize: 14,
+    color: '#8E8E93',
     marginBottom: 2,
   },
   addressRow: {
@@ -211,7 +215,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   addressText: {
-    fontSize: 15,
+    fontSize: 16,
     fontWeight: '600',
     color: '#1C1C1E',
     marginRight: 4,
@@ -264,6 +268,7 @@ const styles = StyleSheet.create({
   },
   categoryItem: {
     alignItems: 'center',
+    gap: 8,
     paddingHorizontal: 19,
     paddingVertical: 6,
     borderRadius: 16,
@@ -289,7 +294,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   categoryText: {
-    fontSize: 13,
+    fontSize: 12,
     color: '#1C1C1E',
     fontWeight: '500',
   },
@@ -306,8 +311,8 @@ const styles = StyleSheet.create({
     color: '#1C1C1E',
   },
   seeAllText: {
-    fontSize: 15,
-    color: '#FF6B6B',
+    fontSize: 16,
+    color: '#FF593C',
     fontWeight: '600',
   },
   sushiGrid: {
