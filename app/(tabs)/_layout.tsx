@@ -8,7 +8,7 @@ const Tabs = withLayoutContext(Navigator);
 
 export default function TabLayout() {
   return (
-    <Tabs tabBar={(props) => <CustomTabBar {...props} />}>
+    <Tabs screenOptions={{ headerShown: false }} tabBar={(props) => <CustomTabBar {...props} />}>
       <Tabs.Screen name="index" options={{ title: "Home" }} />
       <Tabs.Screen name="menu" options={{ title: "Menu" }} />
       <Tabs.Screen name="orders" options={{ title: "Orders" }} />
