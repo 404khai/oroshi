@@ -103,14 +103,44 @@ const profile = () => {
 
         {/* Menu Items */}
         <View style={styles.menuContainer}>
-          {menuItems.map((item, index) => (
-            <TouchableOpacity
-              key={index}
-              style={[
-                styles.menuItem,
-                index === menuItems.length - 1 && styles.menuItemLast,
-              ]}
-            >
+            {menuItems.slice(0, 4).map((item, index, arr) => (
+                <TouchableOpacity
+                    key={index}
+                    style={[
+                    styles.menuItem,
+                    index === arr.length - 1 && styles.menuItemLast, // 👈 use arr (the sliced array)
+                    ]}
+                >
+              <View style={styles.menuIconContainer}>
+                {renderIcon(item)}
+              </View>
+              <View style={styles.menuContent}>
+                <Text style={styles.menuTitle}>{item.title}</Text>
+                <Text style={styles.menuSubtitle}>{item.subtitle}</Text>
+              </View>
+              <Svg width={16} height={16} viewBox="0 0 16 16" fill="none">
+                <Path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M4.86177 2.19514C4.60142 2.45549 4.60142 2.8776 4.86177 3.13795L9.7237 7.99988L4.86177 12.8618C4.60142 13.1222 4.60142 13.5443 4.86177 13.8046C5.12212 14.065 5.54423 14.065 5.80458 13.8046L11.1379 8.47128C11.3983 8.21093 11.3983 7.78882 11.1379 7.52847L5.80457 2.19514C5.54423 1.93479 5.12212 1.93479 4.86177 2.19514Z"
+                    fill="#828282"
+                />
+              </Svg>
+
+            </TouchableOpacity>
+          ))}
+        </View>
+
+        <View style={styles.menuContainer}>
+            {menuItems.slice(-1).map((item, index, arr) => (
+                <TouchableOpacity
+                    key={index}
+                    style={[
+                    styles.menuItem,
+                    index === arr.length - 1 && styles.menuItemLast, // 👈 use arr (the sliced array)
+                    ]}
+                >
+          
               <View style={styles.menuIconContainer}>
                 {renderIcon(item)}
               </View>
@@ -133,7 +163,7 @@ const profile = () => {
       </ScrollView>
 
       {/* Fixed Top Bar with Blur */}
-      <BlurView intensity={80} tint="light" style={styles.topBar}>
+      <BlurView intensity={80} style={styles.topBar}>
         <View style={styles.topBarContent}>
           <Text style={styles.topBarTitle}>Profile</Text>
           <TouchableOpacity style={styles.settingsButton}>
@@ -154,12 +184,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
-    paddingTop: 80,
+    paddingTop: 120,
     paddingBottom: 40,
   },
   topBar: {
     position: 'absolute',
-    top: 0,
+    backgroundColor: 'rgb(255, 253, 254)',
+    top: 30,
     left: 0,
     right: 0,
     zIndex: 100,
@@ -180,7 +211,17 @@ const styles = StyleSheet.create({
     color: '#1F2937',
   },
   settingsButton: {
-    padding: 4,
+    padding: 10,
+    backgroundColor: "#FFFFFF",
+    borderRadius: 50,
+    shadowColor: 'rgb(0, 0, 0, 0.3)',
+    shadowOffset: {
+        width: 0,
+        height: 4, // move shadow down
+    },
+    shadowOpacity: 0.1,  // control transparency
+    shadowRadius: 16,    // 👈 this is your blur
+    elevation: 8, 
   },
   profileBox:{
     flexDirection: 'column',
@@ -190,14 +231,14 @@ const styles = StyleSheet.create({
     marginBottom: 24,
     padding: 12,
     gap: 16,
-    shadowColor: '#000',
+    shadowColor: 'rgb(0, 0, 0, 0.3)',
     shadowOffset: {
-      width: 0,
-      height: 1,
+        width: 0,
+        height: 4, // move shadow down
     },
-    shadowOpacity: 0.08,
-    shadowRadius: 4,
-    elevation: 1,
+    shadowOpacity: 0.1,  // control transparency
+    shadowRadius: 16,    // 👈 this is your blur
+    elevation: 8, 
   },
   profileSection: {
     flexDirection: 'row',
@@ -267,22 +308,23 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     borderRadius: 16,
     paddingVertical: 8,
-    shadowColor: '#000',
+    marginBottom: 24,
+    shadowColor: 'rgb(0, 0, 0, 0.3)',
     shadowOffset: {
-      width: 0,
-      height: 1,
+        width: 0,
+        height: 4, // move shadow down
     },
-    shadowOpacity: 0.05,
-    shadowRadius: 4,
-    elevation: 2,
-  },
+    shadowOpacity: 0.1,  // control transparency
+    shadowRadius: 16,    // 👈 this is your blur
+    elevation: 8,        // Android fallback
+    },
   menuItem: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 16,
     paddingHorizontal: 16,
     borderBottomWidth: 1,
-    borderBottomColor: '#F3F4F6',
+    borderBottomColor: '#EFEFF6',
   },
   menuItemLast: {
     borderBottomWidth: 0,

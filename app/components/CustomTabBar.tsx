@@ -63,6 +63,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     paddingBottom: 10,
     overflow: "hidden",
+    shadowColor: 'rgb(0, 0, 0, 0.3)',
+    shadowOffset: {
+        width: 0,
+        height: -4, // move shadow down
+    },
+    shadowOpacity: 0.1,  // control transparency
+    shadowRadius: 8,    // 👈 this is your blur
+    elevation: 8, 
   },
   tab: {
     flex: 1,
