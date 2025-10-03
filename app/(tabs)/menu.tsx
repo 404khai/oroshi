@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
   },
   categories: {
     flexDirection: "row",
-    marginBottom: 10,
+    paddingBottom: 10
   },
   categoryButton: {
     paddingVertical: 8,
