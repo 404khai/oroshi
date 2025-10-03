@@ -76,7 +76,7 @@ const profile = () => {
         <View style={styles.profileBox}>
             <View style={styles.profileSection}>
                 <Image
-                    source={require('../../assets/images/avatar2.png')}
+                    source={require('../../assets/images/avatar.png')}
                     style={styles.profileImage}
                 />
                 <View style={styles.profileInfo}>
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
   topBarTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#1F2937',
+    color: '#1C1C1E',
   },
   settingsButton: {
     padding: 10,
