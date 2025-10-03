@@ -76,7 +76,7 @@ const profile = () => {
         <View style={styles.profileBox}>
             <View style={styles.profileSection}>
                 <Image
-                    source={require('../../assets/images/avatar2.png')}
+                    source={require('../../assets/images/avatar.png')}
                     style={styles.profileImage}
                 />
                 <View style={styles.profileInfo}>
