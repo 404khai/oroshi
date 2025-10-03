@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useRouter } from 'expo-router';
 import {
   SafeAreaView,
   View,
@@ -40,6 +41,8 @@ export default function orders() {
   ];
 
   const total = (orderSummary.price * quantity).toFixed(2);
+
+  const router = useRouter();
 
   return (
     <SafeAreaView style={styles.container}>
@@ -90,7 +93,7 @@ export default function orders() {
             <Text style={styles.totalText}>Total {quantity} items</Text>
             <Text style={styles.totalCount}>${total}</Text>
             </View>
-            <TouchableOpacity style={styles.placeOrderBtn}>
+            <TouchableOpacity style={styles.placeOrderBtn} onPress={() => router.push("/screens/checkout")}>
             <Text style={styles.placeOrderText}>Place Order</Text>
             </TouchableOpacity>
         </View>
