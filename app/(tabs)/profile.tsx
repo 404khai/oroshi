@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
   topBarTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#1F2937',
+    color: '#1C1C1E',
   },
   settingsButton: {
     padding: 10,

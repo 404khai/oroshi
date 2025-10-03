@@ -145,11 +145,11 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 10,
-    paddingVertical: 40,
+    paddingVertical: 30,
     paddingBottom: 10,
     backgroundColor: '#fffdfe',
   },
-  headerText: { fontSize: 18, fontWeight: "600" },
+  headerText: { fontSize: 20, fontWeight: "600", color: '#1C1C1E' },
   sectionTitle: { fontSize: 16, fontWeight: "600", marginBottom: 12 },
   searchButton: {
     padding: 10,
