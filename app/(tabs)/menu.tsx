@@ -81,7 +81,7 @@ const menu = () => {
             <Text style={styles.promoSub}>On all nigiri sets</Text>
           </View>
           <Image
-            source={require("../../assets/images/salmonNigiri.png")}
+            source={require("../../assets/images/promo.png")}
             style={styles.promoImage}
             resizeMode="contain"
           />

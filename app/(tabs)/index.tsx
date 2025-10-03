@@ -188,11 +188,11 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     zIndex: 100,
-    paddingTop: Platform.OS === 'ios' ? 50 : 20,
+    paddingTop: Platform.OS === 'ios' ? 50 : 10,
   },
   topBar: {
     paddingHorizontal: 20,
-    paddingVertical: 20,
+    paddingVertical: 40,
     paddingBottom: 20,
     backgroundColor: '#fffdfe',
   },
