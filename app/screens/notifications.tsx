@@ -10,6 +10,11 @@ import {
 import { BlurView } from 'expo-blur';
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
+import DeliveryIcon from '../components/icons/DeliveryIcon';
+import { VoucherIcon } from '../components/icons/VoucherIcon';
+import { TagIcon } from '../components/icons/TagIcon';
+import { CheckIcon } from '../components/icons/CheckIcon';
+import { FlameIcon } from '../components/icons/FlameIcon';
 
 const notifications = () => {
   const [activeFilter, setActiveFilter] = useState('All');
@@ -27,40 +32,40 @@ const notifications = () => {
   const notifications = [
     {
       id: 1,
-      icon: '🍱',
-      iconBg: '#FFE8E8',
+      icon: DeliveryIcon,
+      iconBg: '#FFF2F2',
       title: 'Your order is on the way!',
-      description: 'Alexei just picked up your sushi from Sakura Sushi 🍣',
+      description: 'Alexei just picked up your sushi from Sakura Sushi 🛵',
       time: '5 min',
     },
     {
       id: 2,
-      icon: '🎉',
-      iconBg: '#FFE8E8',
+      icon: TagIcon,
+      iconBg: '#FFF2F2',
       title: 'Get 20% off Nigiri sets today only',
       description: 'Today only! Treat yourself to fresh salmon nigiri 🍣',
       time: '7h',
     },
     {
       id: 3,
-      icon: '🎟️',
-      iconBg: '#FFE8E8',
+      icon: VoucherIcon,
+      iconBg: '#FFF2F2',
       title: 'Voucher Earned',
       description: 'You earned a $5 voucher from your last order. Apply at checkout!',
       time: '2h',
     },
     {
       id: 4,
-      icon: '📦',
-      iconBg: '#FFE8E8',
+      icon: CheckIcon,
+      iconBg: '#FFF2F2',
       title: 'Order Delivered',
       description: "Enjoy your meal! Don't forget to rate Sakura Sushi! ⭐",
       time: '4h',
     },
     {
       id: 5,
-      icon: '🔥',
-      iconBg: '#FFE8E8',
+      icon: FlameIcon,
+      iconBg: '#FFF2F2',
       title: 'Trending Near You',
       description: 'Tokyo Delights is getting popular, 100+ orders this week!',
       time: '8h',
@@ -78,19 +83,20 @@ const notifications = () => {
         {/* Notifications List */}
         {notifications.map((notification) => (
           <TouchableOpacity key={notification.id} style={styles.notificationItem}>
-            <View style={[styles.iconContainer, { backgroundColor: notification.iconBg }]}>
-              <Text style={styles.iconEmoji}>{notification.icon}</Text>
-            </View>
+            
             <View style={styles.notificationContent}>
+              <View style={[styles.iconContainer, { backgroundColor: notification.iconBg }]}>
+                <notification.icon />
+              </View>
               <View style={styles.notificationHeader}>
                 <Text style={styles.notificationTitle} numberOfLines={1}>
                   {notification.title}
                 </Text>
-                <Text style={styles.notificationTime}>{notification.time}</Text>
-              </View>
-              <Text style={styles.notificationDescription} numberOfLines={2}>
-                {notification.description}
-              </Text>
+                <Text style={styles.notificationDescription} numberOfLines={2}>
+                  {notification.description}
+                </Text>
+              </View> 
+              <Text style={styles.notificationTime}>{notification.time}</Text>
             </View>
           </TouchableOpacity>
         ))}
@@ -139,15 +145,18 @@ const notifications = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#fffdfe',
   },
   scrollView: {
     flex: 1,
     paddingTop: 20,
+    paddingHorizontal: 20,
   },
   scrollContent: {
     paddingTop: Platform.OS === 'ios' ? 170 : 150,
     paddingBottom: 24,
+    flexDirection: 'column',
+    gap: 16
   },
   headerContainer: {
     position: 'absolute',
@@ -172,7 +181,7 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: "#FFFFFF",
     borderRadius: 50,
-    shadowColor: 'rgb(0, 0, 0, 0.2)',
+    shadowColor: 'rgb(0, 0, 0, 0.3)',
     shadowOffset: {
         width: 0,
         height: 4, // move shadow down
@@ -199,7 +208,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     borderRadius: 20,
     backgroundColor: '#FFFFFF',
-    shadowColor: 'rgb(0, 0, 0, 0.06)',
+    shadowColor: 'rgb(0, 0, 0, 0.2)',
     shadowOffset: {
         width: 0,
         height: 4, // move shadow down
@@ -221,10 +230,17 @@ const styles = StyleSheet.create({
   },
   notificationItem: {
     flexDirection: 'row',
-    paddingHorizontal: 20,
-    paddingVertical: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: '#F3F4F6',
+    padding: 12,
+    borderRadius: 16,
+    backgroundColor: '#FFFFFF',
+    shadowColor: 'rgb(0, 0, 0, 0.3)',
+    shadowOffset: {
+        width: 0,
+        height: 4, // move shadow down
+    },
+    shadowOpacity: 0.1,  // control transparency
+    shadowRadius: 16,    // 👈 this is your blur
+    elevation: 8,
   },
   iconContainer: {
     width: 48,
@@ -238,13 +254,13 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   notificationContent: {
-    flex: 1,
+    flexDirection: 'row',
   },
   notificationHeader: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'space-between',
+    width: 212,
     alignItems: 'flex-start',
-    marginBottom: 4,
   },
   notificationTitle: {
     flex: 1,
@@ -255,12 +271,12 @@ const styles = StyleSheet.create({
   },
   notificationTime: {
     fontSize: 13,
-    color: '#9CA3AF',
+    color: '#888888',
     fontWeight: '400',
   },
   notificationDescription: {
     fontSize: 14,
-    color: '#6B7280',
+    color: '#8E8E93',
     lineHeight: 20,
   },
 });
