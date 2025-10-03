@@ -139,31 +139,33 @@ const checkout = () => {
 
       {/* Checkout Summary */}
       <View style={styles.summary}>
-        <View style={styles.rowBetween}>
-          <Text style={styles.summaryTitle}>Checkout</Text>
-          <Text style={styles.time}>30-45 mins</Text>
-        </View>
+        <View style={styles.summaryBox}>
+            <View style={styles.rowBetween}>
+                <Text style={styles.summaryTitle}>Checkout</Text>
+                <Text style={styles.time}>30-45 mins</Text>
+            </View>
 
-        <View style={styles.rowBetween}>
-          <Text style={styles.label}>Subtotal</Text>
-          <Text style={styles.value}>$26.50</Text>
-        </View>
+            <View style={styles.rowBetween}>
+                <Text style={styles.label}>Subtotal</Text>
+                <Text style={styles.value}>$26.50</Text>
+            </View>
 
-        <View style={styles.rowBetween}>
-          <Text style={styles.label}>Delivery Fee</Text>
-          <Text style={styles.value}>$3.00</Text>
-        </View>
+            <View style={styles.rowBetween}>
+                <Text style={styles.label}>Delivery Fee</Text>
+                <Text style={styles.value}>$3.00</Text>
+            </View>
 
-        <View style={styles.rowBetween}>
-          <Text style={styles.label}>Discount</Text>
-          <Text style={[styles.value, { color: "green" }]}>- $6.50</Text>
-        </View>
+            <View style={styles.rowBetween}>
+                <Text style={styles.label}>Discount</Text>
+                <Text style={[styles.value, { color: "green" }]}>- $6.50</Text>
+            </View>
 
-        <View style={styles.divider} />
+            <View style={styles.divider} />
 
-        <View style={styles.rowBetween}>
-          <Text style={styles.totalLabel}>Total</Text>
-          <Text style={styles.totalValue}>$23.00</Text>
+            <View style={styles.rowBetween}>
+                <Text style={styles.totalLabel}>Total</Text>
+                <Text style={styles.totalValue}>$23.00</Text>
+            </View>
         </View>
 
         <TouchableOpacity style={styles.continueBtn}>
@@ -182,11 +184,11 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
     backgroundColor: '#fffdfe',
-    paddingHorizontal: 20,
+    
   },
   scrollView: {
     flexDirection: 'column',
-    
+    paddingHorizontal: 20,
   },
   scrollContent: {
     paddingTop: Platform.OS === 'ios' ? 170 : 40,
@@ -240,7 +242,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,  // control transparency
     shadowRadius: 16,    // 👈 this is your blur
     elevation: 8, 
-    marginBottom: 24,
+    
   },
   divider: {
     height: 1, // thin line
@@ -293,8 +295,16 @@ const styles = StyleSheet.create({
     padding: 12,
     gap:16,
     marginBottom: 16,
-    elevation: 2,
     height: 136,
+    marginHorizontal: 20,
+    shadowColor: 'rgb(0, 0, 0, 0.3)',
+    shadowOffset: {
+        width: 0,
+        height: 4, // move shadow down
+    },
+    shadowOpacity: 0.1,  // control transparency
+    shadowRadius: 16,    // 👈 this is your blur
+    elevation: 8,
   },
   row: { flexDirection: "row", alignItems: "center" },
   cardRow: { 
@@ -325,12 +335,17 @@ const styles = StyleSheet.create({
     color: "#44B46C",
     fontWeight: "500",
   },
+  summaryBox:{
+    height: 196,
+    gap: 10,
+  },
   summary: {
+    flexDirection: 'column',
     backgroundColor: "#fff",
     borderRadius: 12,
-    paddingHorizontal: 4,
-    marginBottom: 16,
-    
+    paddingHorizontal: 20,
+    paddingTop: 8,
+    paddingBottom: 34
   },
   summaryTitle: { fontSize: 16, fontWeight: "600" },
   time: { fontSize: 14, color: "#666" },
@@ -339,9 +354,10 @@ const styles = StyleSheet.create({
   totalLabel: { fontSize: 16, fontWeight: "600" },
   totalValue: { fontSize: 16, fontWeight: "700" },
   continueBtn: {
-    backgroundColor: "#ff6b6b",
+    backgroundColor: "#FF593C",
     borderRadius: 25,
-    paddingVertical: 14,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
     alignItems: "center",
   },
   continueText: { color: "#fff", fontSize: 16, fontWeight: "600" },
