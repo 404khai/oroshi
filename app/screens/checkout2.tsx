@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
 import Svg, { Path, Rect, G, Defs, ClipPath } from 'react-native-svg';
 // import Header from '../components/Header'; // your existing header component
 
@@ -11,9 +11,7 @@ export default function checkout2() {
       <ScrollView contentContainerStyle={styles.content}>
         {/* Map and Pin Section */}
         <View style={styles.mapContainer}>
-          <View style={styles.map}>
-            <Text style={styles.mapPlaceholder}>🗺️ Map Placeholder</Text>
-          </View>
+          <Image source={require('../../assets/images/map.png')} style={styles.map}/>
           <TouchableOpacity style={styles.editPinButton}>
             <Text style={styles.editPinText}>Edit Pin</Text>
           </TouchableOpacity>
@@ -23,25 +21,36 @@ export default function checkout2() {
         <View style={styles.infoCard}>
           {/* Home */}
           <View style={styles.row}>
-            <HomeIcon />
+            <View style={styles.iconBg}>
+                <HomeIcon />
+            </View>
             <View style={styles.textBox}>
               <Text style={styles.label}>Home</Text>
               <Text style={styles.value}>123 Tokyo Lane</Text>
             </View>
           </View>
 
+          <View style={styles.divider} />
+
           {/* Phone */}
           <View style={styles.row}>
-            <PhoneIcon />
+            <View style={styles.iconBg}>
+                <PhoneIcon />
+            </View>
+            
             <View style={styles.textBox}>
               <Text style={styles.label}>Phone</Text>
               <Text style={styles.value}>+81 03-4567-8901</Text>
             </View>
           </View>
 
+          <View style={styles.divider} />
+
           {/* Delivery Time */}
           <View style={styles.row}>
-            <ClockIcon />
+            <View style={styles.iconBg}>
+                <ClockIcon />
+            </View>
             <View style={styles.textBox}>
               <Text style={styles.label}>Delivery Time</Text>
               <Text style={styles.value}>30–45 mins</Text>
@@ -179,27 +188,51 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   mapPlaceholder: { color: '#888' },
+  divider: {
+    height: 1, // thin line
+    width: "100%", // take full width
+    backgroundColor: "#EFEFF6", // your divider color
+  },
   editPinButton: {
     position: 'absolute',
-    bottom: 10,
+    bottom: 38,
     backgroundColor: '#fff',
-    paddingHorizontal: 16,
-    paddingVertical: 6,
+    paddingHorizontal: 12,
+    paddingVertical: 4,
     borderRadius: 20,
-    borderWidth: 1,
-    borderColor: '#ddd',
+    
   },
-  editPinText: { color: '#000', fontWeight: '500' },
+  editPinText: { 
+    color: '#1C1C1E', 
+    fontWeight: '400' ,
+  },
   infoCard: {
+    flexDirection: 'column',
+    gap: 8,
     backgroundColor: '#fff',
-    borderRadius: 12,
-    padding: 16,
+    borderRadius: 16,
+    padding: 12,
     marginBottom: 20,
-    shadowColor: '#000',
-    shadowOpacity: 0.05,
-    shadowOffset: { width: 0, height: 1 },
+    shadowColor: 'rgb(0, 0, 0, 0.3)',
+    shadowOffset: {
+        width: 0,
+        height: 4, // move shadow down
+    },
+    shadowOpacity: 0.1,  // control transparency
+    shadowRadius: 16,    // 👈 this is your blur
+    elevation: 8,
   },
-  row: { flexDirection: 'row', alignItems: 'center', marginBottom: 14 },
+  row: { 
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    paddingVertical:8,
+    width: '100%'
+  },
+  iconBg:{
+    padding: 10,
+    backgroundColor: '#F7F8FA',
+    borderRadius: 20,
+  },
   textBox: { marginLeft: 12 },
   label: { fontSize: 14, color: '#808087' },
   value: { fontSize: 15, fontWeight: '600', color: '#000' },
@@ -208,9 +241,14 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 16,
     marginBottom: 20,
-    shadowColor: '#000',
-    shadowOpacity: 0.05,
-    shadowOffset: { width: 0, height: 1 },
+    shadowColor: 'rgb(0, 0, 0, 0.3)',
+    shadowOffset: {
+        width: 0,
+        height: 4, // move shadow down
+    },
+    shadowOpacity: 0.1,  // control transparency
+    shadowRadius: 16,    // 👈 this is your blur
+    elevation: 8,
   },
   paymentOption: { flexDirection: 'row', alignItems: 'center', marginBottom: 14 },
   paymentText: { marginLeft: 12, fontSize: 15, color: '#000' },
