@@ -1,12 +1,32 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
+import { router } from 'expo-router';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image, Platform } from 'react-native';
 import Svg, { Path, Rect, G, Defs, ClipPath } from 'react-native-svg';
+import EditIcon from '../components/icons/EditIcon';
+import { Ionicons } from '@expo/vector-icons';
 // import Header from '../components/Header'; // your existing header component
 
 export default function checkout2() {
+    const handleBack = () => {
+    if (router.canGoBack()) {
+      router.back();
+    } else {
+      router.push("/");
+    }
+  };
+
   return (
     <View style={styles.container}>
       {/* <Header title="Checkout" /> */}
+        <View style={styles.topBar}>
+            <TouchableOpacity style={styles.backButton} onPress={handleBack}>
+            <Ionicons name="arrow-back" size={24} color="#1C1C1E" />
+            </TouchableOpacity>
+            <Text style={styles.headerTitle}>Checkout</Text>
+            <TouchableOpacity style={styles.backButton} onPress={handleBack}>
+            <EditIcon />
+            </TouchableOpacity>
+      </View>
 
       <ScrollView contentContainerStyle={styles.content}>
         {/* Map and Pin Section */}
@@ -177,6 +197,35 @@ const MastercardIcon = () => (
 /* STYLES */
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#fff' },
+  topBar: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      backgroundColor: '#fffdfe',
+      paddingTop: Platform.OS === 'ios' ? 50 : 40,
+      paddingHorizontal: 20,
+    },
+    backButton: {
+      padding: 10,
+      backgroundColor: "#FFFFFF",
+      borderRadius: 50,
+      shadowColor: 'rgb(0, 0, 0, 0.3)',
+      shadowOffset: {
+          width: 0,
+          height: 4, // move shadow down
+      },
+      shadowOpacity: 0.1,  // control transparency
+      shadowRadius: 16,    // 👈 this is your blur
+      elevation: 8, 
+    },
+    headerTitle: {
+      fontSize: 16,
+      fontWeight: '600',
+      color: '#1C1C1E',
+    },
+    placeholder: {
+      width: 32,
+    },
   content: { padding: 16 },
   mapContainer: { alignItems: 'center', marginBottom: 20 },
   map: {
