@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { BlurView } from 'expo-blur';
 import { Ionicons } from '@expo/vector-icons';
-import { router } from 'expo-router';
+import { router, useRouter } from 'expo-router';
 import EditIcon from '../components/icons/EditIcon';
 import ProfileIcon2 from '../components/icons/ProfileIcon2';
 import LocationIcon from '../components/icons/LocationIcon';
@@ -25,6 +25,7 @@ const checkout = () => {
     }
   };
 
+  const router = useRouter()
   const [quantity, setQuantity] = useState(1);
 
   // Make it an array so we can map multiple items
@@ -157,7 +158,7 @@ const checkout = () => {
 
             <View style={styles.rowBetween}>
                 <Text style={styles.label}>Discount</Text>
-                <Text style={[styles.value, { color: "green" }]}>- $6.50</Text>
+                <Text style={styles.value}>- $6.50</Text>
             </View>
 
             <View style={styles.divider} />
@@ -168,7 +169,7 @@ const checkout = () => {
             </View>
         </View>
 
-        <TouchableOpacity style={styles.continueBtn}>
+        <TouchableOpacity style={styles.continueBtn} onPress={() => router.push("/screens/checkout2")}>
             <Text style={styles.continueText}>Continue</Text>
         </TouchableOpacity>
       </View>
@@ -347,12 +348,12 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     paddingBottom: 34
   },
-  summaryTitle: { fontSize: 16, fontWeight: "600" },
-  time: { fontSize: 14, color: "#666" },
-  label: { fontSize: 15, color: "#666", marginVertical: 4 },
-  value: { fontSize: 15, fontWeight: "500", marginVertical: 4 },
-  totalLabel: { fontSize: 16, fontWeight: "600" },
-  totalValue: { fontSize: 16, fontWeight: "700" },
+  summaryTitle: { fontSize: 14, fontWeight: "600", color: '#1C1C1E' },
+  time: { fontSize: 14, fontWeight: "600", color: "#1C1C1E" },
+  label: { fontSize: 14, fontWeight: "400", color: "#8E8E93", marginVertical: 4 },
+  value: { fontSize: 14, fontWeight: "400", color: "#8E8E93", marginVertical: 4 },
+  totalLabel: { fontSize: 16, fontWeight: "600", color: '#1C1C1E' },
+  totalValue: { fontSize: 16, fontWeight: "600", color: '#1C1C1E' },
   continueBtn: {
     backgroundColor: "#FF593C",
     borderRadius: 25,
@@ -360,7 +361,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     alignItems: "center",
   },
-  continueText: { color: "#fff", fontSize: 16, fontWeight: "600" },
+  continueText: { color: "#fff", fontSize: 14, fontWeight: "400" },
 });
 
 export default checkout;
