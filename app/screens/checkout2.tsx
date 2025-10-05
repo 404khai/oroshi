@@ -1,12 +1,32 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
+import { router } from 'expo-router';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image, Platform } from 'react-native';
 import Svg, { Path, Rect, G, Defs, ClipPath } from 'react-native-svg';
+import EditIcon from '../components/icons/EditIcon';
+import { Ionicons } from '@expo/vector-icons';
 // import Header from '../components/Header'; // your existing header component
 
 export default function checkout2() {
+    const handleBack = () => {
+    if (router.canGoBack()) {
+      router.back();
+    } else {
+      router.push("/");
+    }
+  };
+
   return (
     <View style={styles.container}>
       {/* <Header title="Checkout" /> */}
+        <View style={styles.topBar}>
+            <TouchableOpacity style={styles.backButton} onPress={handleBack}>
+            <Ionicons name="arrow-back" size={24} color="#1C1C1E" />
+            </TouchableOpacity>
+            <Text style={styles.headerTitle}>Checkout</Text>
+            <TouchableOpacity style={styles.backButton2}>
+            {/* <EditIcon /> */}
+            </TouchableOpacity>
+      </View>
 
       <ScrollView contentContainerStyle={styles.content}>
         {/* Map and Pin Section */}
@@ -60,22 +80,28 @@ export default function checkout2() {
 
         {/* Payment Section */}
         <View style={styles.paymentCard}>
-          <View style={styles.paymentOption}>
-            <ApplePayIcon />
-            <Text style={styles.paymentText}>Apple Pay</Text>
-          </View>
-
-          <View style={styles.paymentOption}>
-            <MastercardIcon />
-            <Text style={styles.paymentText}>xxxx-9010</Text>
-          </View>
-
-          <TouchableOpacity style={styles.paymentOption}>
-            <View style={styles.addCardCircle}>
-              <Text style={{ fontSize: 20, color: '#888' }}>+</Text>
+          <View style={styles.paymentCard2}>
+            <View style={styles.paymentOption}>
+                <ApplePayIcon />
+                <Text style={styles.paymentText}>Apple Pay</Text>
             </View>
-            <Text style={styles.paymentText}>Add new card</Text>
-          </TouchableOpacity>
+
+            <View style={styles.divider} />
+
+            <View style={styles.paymentOption}>
+                <MastercardIcon />
+                <Text style={styles.paymentText}>xxxx-9010</Text>
+            </View>
+
+            <View style={styles.divider} />
+
+            <TouchableOpacity style={styles.paymentOption}>
+                <View style={styles.addCardCircle}>
+                <Text style={{ fontSize: 20, color: '#888' }}>+</Text>
+                </View>
+                <Text style={styles.paymentText}>Add new card</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
         {/* Total Section */}
@@ -177,6 +203,41 @@ const MastercardIcon = () => (
 /* STYLES */
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#fff' },
+  topBar: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      backgroundColor: '#fffdfe',
+      paddingTop: Platform.OS === 'ios' ? 50 : 40,
+      paddingHorizontal: 20,
+    },
+    backButton: {
+      padding: 10,
+      backgroundColor: "#FFFFFF",
+      borderRadius: 50,
+      shadowColor: 'rgb(0, 0, 0, 0.3)',
+      shadowOffset: {
+          width: 0,
+          height: 4, // move shadow down
+      },
+      shadowOpacity: 0.1,  // control transparency
+      shadowRadius: 16,    // 👈 this is your blur
+      elevation: 8, 
+    },
+    backButton2: {
+      padding: 10,
+      backgroundColor: "#FFFFFF",
+      borderRadius: 50,
+      
+    },
+    headerTitle: {
+      fontSize: 16,
+      fontWeight: '600',
+      color: '#1C1C1E',
+    },
+    placeholder: {
+      width: 32,
+    },
   content: { padding: 16 },
   mapContainer: { alignItems: 'center', marginBottom: 20 },
   map: {
@@ -234,12 +295,17 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   textBox: { marginLeft: 12 },
-  label: { fontSize: 14, color: '#808087' },
-  value: { fontSize: 15, fontWeight: '600', color: '#000' },
+  label: { 
+    fontSize: 14, 
+    fontWeight: 600,
+    color: '#1C1C1E' 
+  },
+  value: { fontSize: 14, fontWeight: '400', color: '#8E8E93' },
   paymentCard: {
     backgroundColor: '#fff',
-    borderRadius: 12,
-    padding: 16,
+    borderRadius: 16,
+    padding: 12,
+    height: 156,
     marginBottom: 20,
     shadowColor: 'rgb(0, 0, 0, 0.3)',
     shadowOffset: {
@@ -250,7 +316,20 @@ const styles = StyleSheet.create({
     shadowRadius: 16,    // 👈 this is your blur
     elevation: 8,
   },
-  paymentOption: { flexDirection: 'row', alignItems: 'center', marginBottom: 14 },
+  paymentCard2: {
+    width: 140,
+    height: '100%',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    gap: 12,
+  },
+  paymentOption: { 
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row', 
+    alignItems: 'center', 
+
+  },
   paymentText: { marginLeft: 12, fontSize: 15, color: '#000' },
   addCardCircle: {
     width: 27,
@@ -267,13 +346,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 6,
     marginBottom: 10,
   },
-  totalLabel: { fontSize: 16, fontWeight: '500', color: '#555' },
-  totalValue: { fontSize: 18, fontWeight: '700', color: '#000' },
+  totalLabel: { fontSize: 16, fontWeight: '500', color: '#1C1C1E' },
+  totalValue: { fontSize: 16, fontWeight: '500', color: '#1C1C1E' },
   orderButton: {
     backgroundColor: '#FF5C39',
-    borderRadius: 10,
-    paddingVertical: 14,
+    borderRadius: 99,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
     alignItems: 'center',
   },
-  orderButtonText: { color: '#fff', fontSize: 16, fontWeight: '600' },
+  orderButtonText: { color: '#fff', fontSize: 14, fontWeight: '400' },
 });
