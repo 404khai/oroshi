@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { BlurView } from 'expo-blur';
 import { Ionicons } from '@expo/vector-icons';
-import { router } from 'expo-router';
+import { router, useRouter } from 'expo-router';
 import EditIcon from '../components/icons/EditIcon';
 import ProfileIcon2 from '../components/icons/ProfileIcon2';
 import LocationIcon from '../components/icons/LocationIcon';
@@ -25,6 +25,7 @@ const checkout = () => {
     }
   };
 
+  const router = useRouter()
   const [quantity, setQuantity] = useState(1);
 
   // Make it an array so we can map multiple items
@@ -168,7 +169,7 @@ const checkout = () => {
             </View>
         </View>
 
-        <TouchableOpacity style={styles.continueBtn}>
+        <TouchableOpacity style={styles.continueBtn} onPress={() => router.push("/screens/checkout2")}>
             <Text style={styles.continueText}>Continue</Text>
         </TouchableOpacity>
       </View>
