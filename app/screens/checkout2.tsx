@@ -23,8 +23,8 @@ export default function checkout2() {
             <Ionicons name="arrow-back" size={24} color="#1C1C1E" />
             </TouchableOpacity>
             <Text style={styles.headerTitle}>Checkout</Text>
-            <TouchableOpacity style={styles.backButton} onPress={handleBack}>
-            <EditIcon />
+            <TouchableOpacity style={styles.backButton2}>
+            {/* <EditIcon /> */}
             </TouchableOpacity>
       </View>
 
@@ -80,22 +80,28 @@ export default function checkout2() {
 
         {/* Payment Section */}
         <View style={styles.paymentCard}>
-          <View style={styles.paymentOption}>
-            <ApplePayIcon />
-            <Text style={styles.paymentText}>Apple Pay</Text>
-          </View>
-
-          <View style={styles.paymentOption}>
-            <MastercardIcon />
-            <Text style={styles.paymentText}>xxxx-9010</Text>
-          </View>
-
-          <TouchableOpacity style={styles.paymentOption}>
-            <View style={styles.addCardCircle}>
-              <Text style={{ fontSize: 20, color: '#888' }}>+</Text>
+          <View style={styles.paymentCard2}>
+            <View style={styles.paymentOption}>
+                <ApplePayIcon />
+                <Text style={styles.paymentText}>Apple Pay</Text>
             </View>
-            <Text style={styles.paymentText}>Add new card</Text>
-          </TouchableOpacity>
+
+            <View style={styles.divider} />
+
+            <View style={styles.paymentOption}>
+                <MastercardIcon />
+                <Text style={styles.paymentText}>xxxx-9010</Text>
+            </View>
+
+            <View style={styles.divider} />
+
+            <TouchableOpacity style={styles.paymentOption}>
+                <View style={styles.addCardCircle}>
+                <Text style={{ fontSize: 20, color: '#888' }}>+</Text>
+                </View>
+                <Text style={styles.paymentText}>Add new card</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
         {/* Total Section */}
@@ -218,6 +224,12 @@ const styles = StyleSheet.create({
       shadowRadius: 16,    // 👈 this is your blur
       elevation: 8, 
     },
+    backButton2: {
+      padding: 10,
+      backgroundColor: "#FFFFFF",
+      borderRadius: 50,
+      
+    },
     headerTitle: {
       fontSize: 16,
       fontWeight: '600',
@@ -283,12 +295,17 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   textBox: { marginLeft: 12 },
-  label: { fontSize: 14, color: '#808087' },
-  value: { fontSize: 15, fontWeight: '600', color: '#000' },
+  label: { 
+    fontSize: 14, 
+    fontWeight: 600,
+    color: '#1C1C1E' 
+  },
+  value: { fontSize: 14, fontWeight: '400', color: '#8E8E93' },
   paymentCard: {
     backgroundColor: '#fff',
-    borderRadius: 12,
-    padding: 16,
+    borderRadius: 16,
+    padding: 12,
+    height: 156,
     marginBottom: 20,
     shadowColor: 'rgb(0, 0, 0, 0.3)',
     shadowOffset: {
@@ -299,7 +316,20 @@ const styles = StyleSheet.create({
     shadowRadius: 16,    // 👈 this is your blur
     elevation: 8,
   },
-  paymentOption: { flexDirection: 'row', alignItems: 'center', marginBottom: 14 },
+  paymentCard2: {
+    width: 140,
+    height: '100%',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    gap: 12,
+  },
+  paymentOption: { 
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row', 
+    alignItems: 'center', 
+
+  },
   paymentText: { marginLeft: 12, fontSize: 15, color: '#000' },
   addCardCircle: {
     width: 27,
@@ -316,13 +346,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 6,
     marginBottom: 10,
   },
-  totalLabel: { fontSize: 16, fontWeight: '500', color: '#555' },
-  totalValue: { fontSize: 18, fontWeight: '700', color: '#000' },
+  totalLabel: { fontSize: 16, fontWeight: '500', color: '#1C1C1E' },
+  totalValue: { fontSize: 16, fontWeight: '500', color: '#1C1C1E' },
   orderButton: {
     backgroundColor: '#FF5C39',
-    borderRadius: 10,
-    paddingVertical: 14,
+    borderRadius: 99,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
     alignItems: 'center',
   },
-  orderButtonText: { color: '#fff', fontSize: 16, fontWeight: '600' },
+  orderButtonText: { color: '#fff', fontSize: 14, fontWeight: '400' },
 });
