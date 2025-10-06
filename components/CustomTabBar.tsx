@@ -1,6 +1,6 @@
-import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
+import React from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { HomeIcon } from "./icons/HomeIcon";
 import { MenuIcon } from "./icons/MenuIcon";
 import { OrdersIcon } from "./icons/OrdersIcon";

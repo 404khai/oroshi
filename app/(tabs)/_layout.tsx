@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { withLayoutContext } from "expo-router";
-import { CustomTabBar } from "../components/CustomTabBar";
+import { CustomTabBar  } from "@/components/CustomTabBar";
 
 const { Navigator } = createBottomTabNavigator();
 
