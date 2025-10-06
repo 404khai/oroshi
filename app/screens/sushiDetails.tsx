@@ -10,6 +10,7 @@ import {
   SafeAreaView,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 
 interface MenuItem {
   id: string;
@@ -19,11 +20,13 @@ interface MenuItem {
 }
 
 const menuItems: MenuItem[] = [
-  { id: "1", name: "Salmon Nigiri Set", price: "$12.50", image: require("../assets/salmon-nigiri.png") },
-  { id: "2", name: "Maki Roll", price: "$10.00", image: require("../assets/maki-roll.png") },
-  { id: "3", name: "Tuna Nigiri", price: "$12.50", image: require("../assets/tuna-nigiri.png") },
-  { id: "4", name: "Ebi Nigiri", price: "$10.00", image: require("../assets/ebi-nigiri.png") },
+  { id: "1", name: "Salmon Nigiri Set", price: "$12.50", image: require("../../assets/images/salmonNigiri.png") },
+  { id: "2", name: "Maki Roll", price: "$10.00", image: require("../../assets/images/makiRoll.png") },
+  { id: "3", name: "Deluxe Bento", price: "$12.50", image: require("../../assets/images/deluxeBento.png") },
+  { id: "4", name: "Salmon Sashimi", price: "$10.00", image: require("../../assets/images/salmonSashimi.png") },
 ];
+
+const router = useRouter()
 
 export default function sushiDetails () {
   return (
@@ -40,7 +43,7 @@ export default function sushiDetails () {
 
       {/* Hero Image */}
       <Image
-        source={require("../assets/sushi-hero.png")}
+        source={require("../../assets/images/sushiHero.png")}
         style={styles.heroImage}
         resizeMode="cover"
       />
