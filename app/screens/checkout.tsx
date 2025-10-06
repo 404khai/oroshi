@@ -1,19 +1,18 @@
+import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import {
-  View,
+  Image,
+  Platform,
+  ScrollView,
+  StyleSheet,
   Text,
   TouchableOpacity,
-  StyleSheet,
-  Image,
-  ScrollView,
-  Platform,
+  View,
 } from 'react-native';
-import { BlurView } from 'expo-blur';
-import { Ionicons } from '@expo/vector-icons';
-import { router, useRouter } from 'expo-router';
-import EditIcon from '../components/icons/EditIcon';
-import ProfileIcon2 from '../components/icons/ProfileIcon2';
-import LocationIcon from '../components/icons/LocationIcon';
+import EditIcon from '../../components/icons/EditIcon';
+import LocationIcon from '../../components/icons/LocationIcon';
+import ProfileIcon2 from '../../components/icons/ProfileIcon2';
 // ...imports same as before
 
 const checkout = () => {

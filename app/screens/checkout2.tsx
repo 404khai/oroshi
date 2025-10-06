@@ -1,9 +1,8 @@
-import React from 'react';
-import { router } from 'expo-router';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image, Platform } from 'react-native';
-import Svg, { Path, Rect, G, Defs, ClipPath } from 'react-native-svg';
-import EditIcon from '../components/icons/EditIcon';
 import { Ionicons } from '@expo/vector-icons';
+import { router } from 'expo-router';
+import React from 'react';
+import { Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import Svg, { ClipPath, Defs, G, Path, Rect } from 'react-native-svg';
 // import Header from '../components/Header'; // your existing header component
 
 export default function checkout2() {
@@ -96,9 +95,7 @@ export default function checkout2() {
             <View style={styles.divider} />
 
             <TouchableOpacity style={styles.paymentOption}>
-                <View style={styles.addCardCircle}>
-                <Text style={{ fontSize: 20, color: '#888' }}>+</Text>
-                </View>
+                <AddIcon />
                 <Text style={styles.paymentText}>Add new card</Text>
             </TouchableOpacity>
           </View>
@@ -170,10 +167,17 @@ const ClockIcon = () => (
 );
 
 const ApplePayIcon = () => (
-  <Svg width="27" height="20" viewBox="0 0 27 20" fill="none">
-    <Rect x="0.5" y="2.5" width="26" height="15" rx="2.5" stroke="#1C1C1E" />
+  <Svg width={27} height={20} viewBox="0 0 27 20" fill="none">
+    <Rect
+      x="0.5"
+      y="2.5"
+      width="26"
+      height="15"
+      rx="2.5"
+      stroke="#1C1C1E"
+    />
     <Path
-      d="M7.7522 7.0314C7.52387 7.30158 7.15847 7.51477 6.7931 7.48428C6.74744 7.11896 6.9263 6.73073 7.13563 6.49094C7.36396 6.21314 7.76361 6.01522 8.08712 6C8.12517 6.38058 7.97672 6.75356 7.7522 7.0314Z"
+      d="M7.7522 7.0314C7.52387 7.30158 7.15847 7.51477 6.7931 7.48428C6.74744 7.11896 6.9263 6.73073 7.13563 6.49094C7.36396 6.21314 7.76361 6.01522 8.08712 6C8.12517 6.38058 7.97672 6.75356 7.7522 7.0314ZM8.08335 7.55663C7.55431 7.52618 7.10142 7.85726 6.85022 7.85726C6.59526 7.85726 6.21083 7.57185 5.79219 7.57946C5.24797 7.58707 4.74177 7.89531 4.46393 8.38629C3.89304 9.36822 4.31552 10.8221 4.86735 11.6213C5.13758 12.0171 5.46108 12.451 5.88733 12.4358C6.29078 12.4205 6.45061 12.1732 6.93779 12.1732C7.42873 12.1732 7.56957 12.4358 7.99582 12.4282C8.43729 12.4205 8.71513 12.0324 8.98536 11.6365C9.2936 11.1875 9.41922 10.7498 9.42683 10.7269C9.41922 10.7193 8.57433 10.3958 8.56672 9.42149C8.55911 8.60705 9.23275 8.21885 9.26319 8.19602C8.88257 7.63273 8.28888 7.57185 8.08335 7.55663ZM10.3366 6.45289V12.3863H11.2576V10.3578H12.5325C13.6971 10.3578 14.5154 9.55857 14.5154 8.40155C14.5154 7.24458 13.7124 6.45293 12.563 6.45293L10.3366 6.45289ZM11.2576 7.22932H12.3194C13.1187 7.22932 13.5754 7.65557 13.5754 8.40532C13.5754 9.15507 13.1187 9.58517 12.3156 9.58517H11.2576V7.22932ZM16.1976 12.432C16.7761 12.432 17.3127 12.1389 17.5563 11.6746H17.5753V12.3863H18.4279V9.43291C18.4279 8.5766 17.7428 8.02474 16.6885 8.02474C15.7104 8.02474 14.9873 8.58421 14.9607 9.35299H15.7904C15.8589 8.98763 16.1975 8.74785 16.6619 8.74785C17.2252 8.74785 17.5411 9.01046 17.5411 9.49383V9.82111L16.3917 9.8896C15.3222 9.9543 14.7437 10.392 14.7437 11.1532C14.7437 11.922 15.3412 12.432 16.1976 12.432ZM16.4449 11.7279C15.954 11.7279 15.6419 11.4919 15.6419 11.1303C15.6419 10.7574 15.9426 10.5405 16.5173 10.5062L17.5411 10.4415V10.7764C17.5411 11.3321 17.0691 11.7279 16.4449 11.7279ZM19.5658 14C20.464 14 20.8865 13.6575 21.2557 12.6185L22.8731 8.08182H21.9369L20.8522 11.587H20.8332L19.7485 8.08182H18.7856L20.346 12.4015L20.2623 12.6641C20.1215 13.1094 19.8931 13.2807 19.4859 13.2807C19.4136 13.2807 19.2728 13.2731 19.2157 13.2655V13.9772C19.2689 13.9924 19.4973 14 19.5658 14Z"
       fill="#1C1C1E"
     />
   </Svg>
@@ -199,6 +203,36 @@ const MastercardIcon = () => (
     </Defs>
   </Svg>
 );
+
+
+
+const AddIcon = () => (
+  <Svg width={20} height={20} viewBox="0 0 20 20" fill="none">
+    <Path
+      d="M9.68163 18.3334C14.1191 18.3334 17.7497 14.5834 17.7497 10C17.7497 5.41669 14.1191 1.66669 9.68163 1.66669C5.24417 1.66669 1.61353 5.41669 1.61353 10C1.61353 14.5834 5.24417 18.3334 9.68163 18.3334Z"
+      stroke="#1C1C1E"
+      strokeWidth={1.25}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <Path
+      d="M6.45435 10H12.9088"
+      stroke="#1C1C1E"
+      strokeWidth={1.25}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <Path
+      d="M9.68164 13.3334V6.66669"
+      stroke="#1C1C1E"
+      strokeWidth={1.25}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </Svg>
+);
+
+
 
 /* STYLES */
 const styles = StyleSheet.create({

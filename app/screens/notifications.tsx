@@ -1,20 +1,20 @@
+import { Ionicons } from '@expo/vector-icons';
+import { BlurView } from 'expo-blur';
+import { router } from 'expo-router';
 import React, { useState } from 'react';
 import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  ScrollView,
-  Platform,
+    Platform,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from 'react-native';
-import { BlurView } from 'expo-blur';
-import { Ionicons } from '@expo/vector-icons';
-import { router } from 'expo-router';
-import DeliveryIcon from '../components/icons/DeliveryIcon';
-import { VoucherIcon } from '../components/icons/VoucherIcon';
-import { TagIcon } from '../components/icons/TagIcon';
-import { CheckIcon } from '../components/icons/CheckIcon';
-import { FlameIcon } from '../components/icons/FlameIcon';
+import { CheckIcon } from '../../components/icons/CheckIcon';
+import DeliveryIcon from '../../components/icons/DeliveryIcon';
+import { FlameIcon } from '../../components/icons/FlameIcon';
+import { TagIcon } from '../../components/icons/TagIcon';
+import { VoucherIcon } from '../../components/icons/VoucherIcon';
 
 const notifications = () => {
   const [activeFilter, setActiveFilter] = useState('All');
