@@ -110,7 +110,7 @@ export default function checkout2() {
         </View>
 
         {/* Place Order Button */}
-        <TouchableOpacity style={styles.orderButton} onPress={() => router.push("/screens/deliveryAddress")}>
+        <TouchableOpacity style={styles.orderButton} onPress={() => router.push("/screens/chat")}>
           <Text style={styles.orderButtonText}>Place Order</Text>
         </TouchableOpacity>
       </ScrollView>

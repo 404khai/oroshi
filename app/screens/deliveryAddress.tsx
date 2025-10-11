@@ -2,7 +2,6 @@ import { View, Text, TouchableOpacity, Platform, StyleSheet } from 'react-native
 import React from 'react'
 import { useRouter } from 'expo-router'
 import { Ionicons } from '@expo/vector-icons'
-import EditIcon from '@/components/icons/EditIcon'
 
 const deliveryAddress = () => {
     const router = useRouter()
@@ -33,7 +32,7 @@ const deliveryAddress = () => {
       </View>
       
               {/* Place Order Button */}
-      <TouchableOpacity style={styles.orderButton} onPress={() => router.push("/screens/deliveryAddress")}>
+      <TouchableOpacity style={styles.orderButton} onPress={() => router.push("/screens/chat")}>
         <Text style={styles.orderButtonText}>Confirm Pin Location</Text>
       </TouchableOpacity>
     </View>
