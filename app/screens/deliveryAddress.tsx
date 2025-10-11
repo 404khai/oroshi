@@ -60,7 +60,7 @@ const deliveryAddress = () => {
             <EditIcon2/>
         </View>
 
-        <TouchableOpacity style={styles.orderButton} onPress={() => router.push("/screens/chat")}>
+        <TouchableOpacity style={styles.orderButton} onPress={() => router.push("/screens/deliveryTracking")}>
           <Text style={styles.orderButtonText}>Confirm Pin Location</Text>
         </TouchableOpacity>
       </View>
