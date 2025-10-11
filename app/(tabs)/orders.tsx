@@ -10,6 +10,7 @@ import {
   Image,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import SearchIcon from "@/components/icons/SearchIcon";
 
 export default function orders() {
   const [quantity, setQuantity] = useState(1);
@@ -52,7 +53,7 @@ export default function orders() {
 
           <Text style={styles.headerText}>My Orders</Text>
           <TouchableOpacity style={styles.searchButton}>
-            <Ionicons name="search-outline" size={22} color="black" />
+            <SearchIcon />
           </TouchableOpacity>
           
         </View>

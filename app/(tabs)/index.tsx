@@ -13,6 +13,8 @@ import {
 import { BlurView } from 'expo-blur';
 import { Ionicons } from '@expo/vector-icons';
 import Svg, { Path, Circle } from 'react-native-svg';
+import SearchIcon from '@/components/icons/SearchIcon';
+import LocationPinIcon from '@/components/icons/LocationPinIcon';
 
 const HomeScreen = () => {
   const categories = [
@@ -131,7 +133,7 @@ const HomeScreen = () => {
           {/* Delivery Address */}
           <View style={styles.deliverySection}>
             <TouchableOpacity style={styles.notificationButton}>
-              <Ionicons name="location-outline" size={20} color="#1C1C1E" />
+              <LocationPinIcon/>
             </TouchableOpacity>
             
             <View style={styles.addressContainer}>
@@ -148,12 +150,7 @@ const HomeScreen = () => {
 
           {/* Search Bar */}
           <View style={styles.searchContainer}>
-            <Ionicons
-              name="search"
-              size={20}
-              color="#1C1C1E"
-              style={styles.searchIcon}
-            />
+            <SearchIcon/>
             <TextInput
               style={styles.searchInput}
               placeholder="Search sushi, rolls, sashimi..."

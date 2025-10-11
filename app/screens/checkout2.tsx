@@ -1,3 +1,4 @@
+import BackArrowIcon from '@/components/icons/BackArrowIcon';
 import { Ionicons } from '@expo/vector-icons';
 import { router, useRouter } from 'expo-router';
 import React from 'react';
@@ -21,7 +22,7 @@ export default function checkout2() {
       {/* <Header title="Checkout" /> */}
         <View style={styles.topBar}>
             <TouchableOpacity style={styles.backButton} onPress={handleBack}>
-            <Ionicons name="arrow-back" size={24} color="#1C1C1E" />
+              <BackArrowIcon />
             </TouchableOpacity>
             <Text style={styles.headerTitle}>Checkout</Text>
             <TouchableOpacity style={styles.backButton2}>
@@ -110,7 +111,7 @@ export default function checkout2() {
         </View>
 
         {/* Place Order Button */}
-        <TouchableOpacity style={styles.orderButton} onPress={() => router.push("/screens/chat")}>
+        <TouchableOpacity style={styles.orderButton} onPress={() => router.push("/screens/deliveryAddress")}>
           <Text style={styles.orderButtonText}>Place Order</Text>
         </TouchableOpacity>
       </ScrollView>

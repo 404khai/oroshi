@@ -13,6 +13,7 @@ import {
 import EditIcon from '../../components/icons/EditIcon';
 import LocationIcon from '../../components/icons/LocationIcon';
 import ProfileIcon2 from '../../components/icons/ProfileIcon2';
+import BackArrowIcon from '@/components/icons/BackArrowIcon';
 // ...imports same as before
 
 const checkout = () => {
@@ -56,7 +57,7 @@ const checkout = () => {
       {/* Top Bar */}
       <View style={styles.topBar}>
         <TouchableOpacity style={styles.backButton} onPress={handleBack}>
-          <Ionicons name="arrow-back" size={24} color="#1C1C1E" />
+          <BackArrowIcon />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Checkout</Text>
         <TouchableOpacity style={styles.backButton} onPress={handleBack}>
