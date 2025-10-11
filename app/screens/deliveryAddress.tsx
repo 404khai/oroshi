@@ -1,10 +1,11 @@
-import { View, Text, TouchableOpacity, Platform, StyleSheet, ImageBackground } from 'react-native'
-import React from 'react'
-import { useRouter } from 'expo-router'
-import { Ionicons } from '@expo/vector-icons'
 import BackArrowIcon from '@/components/icons/BackArrowIcon'
+import EditIcon2 from '@/components/icons/EditIcon2'
+import LocationIcon from '@/components/icons/LocationIcon'
 import MapPinIcon from '@/components/icons/MapPinIcon'
-import EditIcon from '@/components/icons/EditIcon'
+import { Ionicons } from '@expo/vector-icons'
+import { useRouter } from 'expo-router'
+import React from 'react'
+import { ImageBackground, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 const deliveryAddress = () => {
   const router = useRouter()
@@ -34,7 +35,10 @@ const deliveryAddress = () => {
       <ImageBackground source={backgroundImage} style={styles.mapContainer} resizeMode="cover">
         {/* Floating delivery message */}
         <View style={styles.deliveryBubble}>
-          <Text style={styles.deliveryText}>Your order will be delivered here</Text>
+            <Text style={styles.deliveryText}>Your order will be delivered here</Text>
+
+            {/* Triangle tail */}
+            <View style={styles.triangle} />
         </View>
 
         {/* Pin marker */}
@@ -46,12 +50,14 @@ const deliveryAddress = () => {
       {/* Bottom section */}
       <View style={styles.bottomSection}>
         <View style={styles.footer}>
-            <Ionicons name="location-outline" size={20} color="#1C1C1E" />
-            <View style={styles.deliveryLocation}>
-                <Text style={styles.totalLabel}>Address</Text>
-                <Text style={styles.totalValue}>123 Tokyo Lane</Text>
+            <View style={styles.locationBg}>
+                <LocationIcon/>
             </View>
-            <EditIcon/>
+            <View style={styles.deliveryLocation}>
+                <Text style={styles.addressTxt}>Address</Text>
+                <Text style={styles.addressTxt2}>123 Tokyo Lane</Text>
+            </View>
+            <EditIcon2/>
         </View>
 
         <TouchableOpacity style={styles.orderButton} onPress={() => router.push("/screens/chat")}>
@@ -100,6 +106,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  pinContainer: {
+    position: 'absolute',
+    top: '50%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   deliveryBubble: {
     position: 'absolute',
     top: '38%',
@@ -110,31 +122,31 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 10,
     elevation: 4,
+    alignItems: 'center',
   },
   deliveryText: {
     color: '#804521',
     fontSize: 14,
     fontWeight: '400',
   },
-  pinContainer: {
+  triangle: {
     position: 'absolute',
-    top: '50%',
-    alignItems: 'center',
-    justifyContent: 'center',
+    bottom: -8, // pushes it below the bubble
+    left: '55%',
+    marginLeft: -8, // centers horizontally (half of border width)
+    width: 0,
+    height: 0,
+    borderLeftWidth: 8,
+    borderRightWidth: 8,
+    borderTopWidth: 8,
+    borderLeftColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderTopColor: '#FFEADB', // same as bubble background
   },
-  pinOuter: {
-    width: 40,
-    height: 40,
-    backgroundColor: '#FF5C39',
-    borderRadius: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  pinInner: {
-    width: 14,
-    height: 14,
-    backgroundColor: '#fff',
-    borderRadius: 7,
+  locationBg:{
+    padding: 10, 
+    borderRadius: 99,
+    backgroundColor: '#F7F8FA'
   },
   bottomSection: {
     backgroundColor: '#fff',
@@ -152,16 +164,15 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   deliveryLocation:{
-    width: '80%',
-    backgroundColor: '#4dfe4e',
+    width: '75%',
     height: '100%'
   },
-  totalLabel: {
-    fontSize: 16,
-    fontWeight: '500',
-    color: '#1C1C1E',
+  addressTxt: {
+    fontSize: 14,
+    fontWeight: '400',
+    color: '#8E8E93',
   },
-  totalValue: {
+  addressTxt2: {
     fontSize: 16,
     fontWeight: '500',
     color: '#1C1C1E',
