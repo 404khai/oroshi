@@ -150,11 +150,14 @@ const styles = StyleSheet.create({
     padding: 16,
     marginHorizontal: 16,
     marginTop: -40,
-    shadowColor: "#000",
-    shadowOpacity: 0.08,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 4,
-    elevation: 3,
+    shadowColor: 'rgb(0, 0, 0, 0.3)',
+    shadowOffset: {
+        width: 0,
+        height: 4, // move shadow down
+    },
+    shadowOpacity: 0.1,  // control transparency
+    shadowRadius: 16,    // 👈 this is your blur
+    elevation: 8, 
   },
   restaurantName: {
     fontSize: 20,

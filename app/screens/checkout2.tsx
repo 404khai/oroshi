@@ -1,11 +1,13 @@
 import { Ionicons } from '@expo/vector-icons';
-import { router } from 'expo-router';
+import { router, useRouter } from 'expo-router';
 import React from 'react';
 import { Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Svg, { ClipPath, Defs, G, Path, Rect } from 'react-native-svg';
 // import Header from '../components/Header'; // your existing header component
 
 export default function checkout2() {
+    const router = useRouter()
+
     const handleBack = () => {
     if (router.canGoBack()) {
       router.back();
@@ -108,7 +110,7 @@ export default function checkout2() {
         </View>
 
         {/* Place Order Button */}
-        <TouchableOpacity style={styles.orderButton}>
+        <TouchableOpacity style={styles.orderButton} onPress={() => router.push("/screens/deliveryAddress")}>
           <Text style={styles.orderButtonText}>Place Order</Text>
         </TouchableOpacity>
       </ScrollView>
