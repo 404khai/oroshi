@@ -145,8 +145,8 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     paddingHorizontal: 20,
-    paddingTop: 16,
-    paddingBottom: 30,
+    paddingTop: 24,
+    paddingBottom: 34,
   },
   heading: {
     fontSize: 18,
