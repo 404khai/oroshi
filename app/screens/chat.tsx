@@ -3,6 +3,8 @@ import React from 'react'
 import { Ionicons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
 import SendIcon from '@/components/icons/SendIcon'
+import CallIcon from '@/components/icons/CallIcon'
+import BackArrowIcon from '@/components/icons/BackArrowIcon'
 
 const chat = () => {
   const router = useRouter()
@@ -20,47 +22,47 @@ const chat = () => {
       {/* Top bar (your existing code) */}
       <View style={styles.topBar}>
         <TouchableOpacity style={styles.backButton} onPress={handleBack}>
-          <Ionicons name="arrow-back" size={24} color="#1C1C1E" />
+          <BackArrowIcon />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Alexei</Text>
         <TouchableOpacity style={styles.backButton}>
-          <Ionicons name="search-outline" size={22} color="black" />
+          <CallIcon />
         </TouchableOpacity>
       </View>
 
       {/* Chat Messages */}
       <ScrollView contentContainerStyle={styles.chatContainer}>
-        <View style={styles.messageWrapperLeft}>
-          <View style={styles.messageLeft}>
-            <Text style={styles.messageText}>Hello</Text>
+        <View style={styles.messageWrapperRight}>
+          <View style={styles.messageRight}>
+            <Text style={styles.messageTextSender}>Hello</Text>
           </View>
           <Text style={styles.timeText}>08:00</Text>
         </View>
 
         <View style={styles.messageWrapperRight}>
           <View style={styles.messageRight}>
-            <Text style={styles.messageText}>Is my sushi order on the way?</Text>
+            <Text style={styles.messageTextSender}>Is my sushi order on the way?</Text>
           </View>
           <Text style={styles.timeText}>08:00</Text>
         </View>
 
         <View style={styles.messageWrapperLeft}>
           <View style={styles.messageLeft}>
-            <Text style={styles.messageText}>Is my sushi order on the way?</Text>
+            <Text style={styles.messageTextReceiver}>Is my sushi order on the way?</Text>
           </View>
           <Text style={styles.timeText}>08:02</Text>
         </View>
 
         <View style={styles.messageWrapperRight}>
           <View style={styles.messageRight}>
-            <Text style={styles.messageText}>Awesome! When do you think you’ll arrive?</Text>
+            <Text style={styles.messageTextSender}>Awesome! When do you think you’ll arrive?</Text>
           </View>
           <Text style={styles.timeText}>08:02</Text>
         </View>
 
         <View style={styles.messageWrapperLeft}>
           <View style={styles.messageLeft}>
-            <Text style={styles.messageText}>I should be there in about 15 minutes</Text>
+            <Text style={styles.messageTextReceiver}>I should be there in about 15 minutes</Text>
           </View>
           <Text style={styles.timeText}>08:02</Text>
         </View>
@@ -112,6 +114,7 @@ const styles = StyleSheet.create({
   chatContainer: {
     paddingHorizontal: 20,
     paddingVertical: 10,
+    marginTop: 20
   },
   messageWrapperLeft: {
     alignItems: 'flex-start',
@@ -122,28 +125,32 @@ const styles = StyleSheet.create({
     marginBottom: 14,
   },
   messageLeft: {
-    backgroundColor: '#F3F3F3',
+    backgroundColor: '#F7F8FA',
     borderRadius: 20,
-    borderTopLeftRadius: 4,
+    borderBottomLeftRadius: 4,
     paddingVertical: 10,
     paddingHorizontal: 16,
     maxWidth: '80%',
   },
   messageRight: {
-    backgroundColor: '#FF4B3E',
+    backgroundColor: '#FF593C',
     borderRadius: 20,
-    borderTopRightRadius: 4,
+    borderBottomRightRadius: 4,
     paddingVertical: 10,
     paddingHorizontal: 16,
     maxWidth: '80%',
   },
-  messageText: {
-    fontSize: 15,
-    color: '#1C1C1E',
+  messageTextReceiver: {
+    fontSize: 14,
+    color: '#808087',
+  },
+  messageTextSender: {
+    fontSize: 14,
+    color: '#FFFFFF',
   },
   timeText: {
-    fontSize: 11,
-    color: '#A2A2A2',
+    fontSize: 12,
+    color: '#808087',
     marginTop: 2,
     marginHorizontal: 6,
   },
