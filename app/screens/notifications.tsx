@@ -15,6 +15,7 @@ import DeliveryIcon from '../../components/icons/DeliveryIcon';
 import { FlameIcon } from '../../components/icons/FlameIcon';
 import { TagIcon } from '../../components/icons/TagIcon';
 import { VoucherIcon } from '../../components/icons/VoucherIcon';
+import BackArrowIcon from '@/components/icons/BackArrowIcon';
 
 const notifications = () => {
   const [activeFilter, setActiveFilter] = useState('All');
@@ -108,7 +109,7 @@ const notifications = () => {
           {/* Top Bar */}
           <View style={styles.topBar}>
             <TouchableOpacity style={styles.backButton} onPress={handleBack}>
-              <Ionicons name="arrow-back" size={24} color="#1C1C1E" />
+              <BackArrowIcon />
             </TouchableOpacity>
             <Text style={styles.headerTitle}>Notifications</Text>
             <View style={styles.placeholder} />
