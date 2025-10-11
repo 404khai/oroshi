@@ -102,7 +102,7 @@ const HomeScreen = () => {
         {/* Sushi Grid */}
         <View style={styles.sushiGrid}>
           {sushiItems.map((item) => (
-            <View key={item.id} style={styles.sushiCard}>
+            <TouchableOpacity key={item.id} style={styles.sushiCard} onPress={() => router.push("/screens/sushiDetails")}>
               <View style={styles.imageContainer}>
                 <Image source={item.image} style={styles.sushiImage} />
               </View>
@@ -120,7 +120,7 @@ const HomeScreen = () => {
                   <Text style={styles.time}>{item.time}</Text>
                 </View>
               </View>
-            </View>
+            </TouchableOpacity>
           ))}
         </View>
       </ScrollView>
