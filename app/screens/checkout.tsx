@@ -1,3 +1,4 @@
+import BackArrowIcon from '@/components/icons/BackArrowIcon';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
@@ -11,9 +12,8 @@ import {
   View,
 } from 'react-native';
 import EditIcon from '../../components/icons/EditIcon';
-import LocationIcon from '../../components/icons/LocationIcon';
+import GreenTagIcon from '../../components/icons/GreenTagIcon';
 import ProfileIcon2 from '../../components/icons/ProfileIcon2';
-import BackArrowIcon from '@/components/icons/BackArrowIcon';
 // ...imports same as before
 
 const checkout = () => {
@@ -130,7 +130,7 @@ const checkout = () => {
         <View style={styles.cardRow}>
           <View style={styles.row}>
             <View style={styles.locationIcon}>
-                <LocationIcon/>
+                <GreenTagIcon/>
             </View>
             <Text style={styles.discountText}>20% OFF Applied</Text>
           </View>
