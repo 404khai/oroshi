@@ -324,6 +324,10 @@ import { useRouter } from "expo-router";
 import CallIcon from "@/components/icons/CallIcon";
 import CallIcon2 from "@/components/icons/CallIcon2";
 import ChatIcon from "@/components/icons/ChatIcon";
+import PackageIcon from "@/components/icons/PackageIcon";
+import ShopIcon from "@/components/icons/ShopIcon";
+import CarIcon from "@/components/icons/CarIcon";
+import HomeIcon2 from "@/components/icons/HomeIcon2";
 
 const deliveryTracking = () => {
   const router = useRouter()
@@ -362,27 +366,26 @@ const deliveryTracking = () => {
         {/* Progress Bar */}
         <View style={styles.progressContainer}>
           {[
-            { icon: "time-outline" },
-            { icon: "cube-outline" },
-            { icon: "bicycle-outline" },
-            { icon: "home-outline" },
-          ].map((item, index) => (
-            <View key={index} style={styles.stepItem}>
-              <View
-                style={[
-                  styles.stepCircle,
-                  index < 3 ? styles.activeCircle : styles.inactiveCircle,
-                ]}
-              >
-                <Ionicons
-                  name={item.icon as any}
-                  size={16}
-                  color={index < 3 ? "#fff" : "#FF593C"}
-                />
+            { icon: <PackageIcon color="#fff" />, inactiveIcon: <PackageIcon color="#FF593C" /> },
+            { icon: <ShopIcon color="#fff" />, inactiveIcon: <ShopIcon color="#FF593C" /> },
+            { icon: <CarIcon color="#fff" />, inactiveIcon: <CarIcon color="#FF593C" /> },
+            { icon: <HomeIcon2 color="#fff" />, inactiveIcon: <HomeIcon2 color="#FF593C" /> },
+          ].map((item, index) => {
+            const isActive = index < 3; // for example
+            return (
+              <View key={index} style={styles.stepItem}>
+                <View
+                  style={[
+                    styles.stepCircle,
+                    isActive ? styles.activeCircle : styles.inactiveCircle,
+                  ]}
+                >
+                  {isActive ? item.icon : item.inactiveIcon}
+                </View>
+                {index < 3 && <View style={styles.line} />}
               </View>
-              {index < 3 && <View style={styles.line} />}
-            </View>
-          ))}
+            );
+          })}
         </View>
 
         <Text style={styles.give}>Give Alexei a moment to drop off your order</Text>
