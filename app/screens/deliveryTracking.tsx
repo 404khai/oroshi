@@ -321,13 +321,13 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import CallIcon from "@/components/icons/CallIcon";
 import CallIcon2 from "@/components/icons/CallIcon2";
 import ChatIcon from "@/components/icons/ChatIcon";
 import PackageIcon from "@/components/icons/PackageIcon";
 import ShopIcon from "@/components/icons/ShopIcon";
-import CarIcon from "@/components/icons/CarIcon";
 import HomeIcon2 from "@/components/icons/HomeIcon2";
+import CoinIcon from "@/components/icons/CoinIcon";
+import ScooterIcon from "@/components/icons/ScooterIcon";
 
 const deliveryTracking = () => {
   const router = useRouter()
@@ -366,9 +366,9 @@ const deliveryTracking = () => {
         {/* Progress Bar */}
         <View style={styles.progressContainer}>
           {[
-            { icon: <PackageIcon color="#fff" />, inactiveIcon: <PackageIcon color="#FF593C" /> },
+            { icon: <CoinIcon  />, inactiveIcon: <PackageIcon color="#FF593C" /> },
             { icon: <ShopIcon color="#fff" />, inactiveIcon: <ShopIcon color="#FF593C" /> },
-            { icon: <CarIcon color="#fff" />, inactiveIcon: <CarIcon color="#FF593C" /> },
+            { icon: <ScooterIcon color="#fff" />, inactiveIcon: <ScooterIcon color="#FF593C" /> },
             { icon: <HomeIcon2 color="#fff" />, inactiveIcon: <HomeIcon2 color="#FF593C" /> },
           ].map((item, index) => {
             const isActive = index < 3; // for example

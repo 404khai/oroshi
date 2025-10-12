@@ -1,13 +1,13 @@
 import React from 'react';
 import Svg, { Path } from 'react-native-svg';
 
-interface CarIconProps {
+interface ScooterIconProps {
   width?: number;
   height?: number;
   color?: string;
 }
 
-const CarIcon: React.FC<CarIconProps> = ({
+const ScooterIcon: React.FC<ScooterIconProps> = ({
   width = 17,
   height = 16,
   color = 'white',
@@ -25,4 +25,4 @@ const CarIcon: React.FC<CarIconProps> = ({
   </Svg>
 );
 
-export default CarIcon;
+export default ScooterIcon;
