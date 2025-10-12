@@ -8,8 +8,20 @@ import {
   Image,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
+import CallIcon from "@/components/icons/CallIcon";
+import CallIcon2 from "@/components/icons/CallIcon2";
+import ChatIcon from "@/components/icons/ChatIcon";
 
 const deliveryTracking = () => {
+  const router = useRouter()
+
+  const handleBack = () => {
+    if (router.canGoBack()) router.back()
+    else router.push("/")
+  }
+
+
   return (
     <View style={styles.container}>
       {/* Background Image (map + scooter) */}
@@ -74,11 +86,11 @@ const deliveryTracking = () => {
           </View>
 
           <View style={styles.contactButtons}>
-            <TouchableOpacity style={styles.contactButton}>
-              <Ionicons name="chatbubble-outline" size={18} color="#1C1C1E" />
+            <TouchableOpacity style={styles.contactButton} onPress={() => router.push("/screens/chat")}> 
+              <ChatIcon />
             </TouchableOpacity>
             <TouchableOpacity style={styles.contactButton}>
-              <Ionicons name="call-outline" size={18} color="#1C1C1E" />
+              <CallIcon2 />
             </TouchableOpacity>
           </View>
         </View>
@@ -204,32 +216,34 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   delivererLabel: {
-    fontSize: 13,
-    color: "#8E8E93",
+    fontSize: 16,
+    fontWeight: 500,
+    color: "#1C1C1E",
   },
   delivererName: {
-    fontSize: 15,
-    fontWeight: "500",
-    color: "#1C1C1E",
+    fontSize: 14,
+    fontWeight: 400,
+    color: "#8E8E93",
   },
   contactButtons: {
     flexDirection: "row",
     gap: 12,
   },
   contactButton: {
-    backgroundColor: "#F5F5F7",
+    backgroundColor: "#F7F8FA",
     borderRadius: 50,
     padding: 10,
   },
   orderButton: {
     backgroundColor: "#FF593C",
     borderRadius: 99,
-    paddingVertical: 14,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
     alignItems: "center",
   },
   orderButtonText: {
     color: "#fff",
-    fontSize: 15,
-    fontWeight: "600",
+    fontSize: 14,
+    fontWeight: "400",
   },
 });
