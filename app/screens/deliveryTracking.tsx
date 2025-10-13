@@ -414,7 +414,7 @@ const deliveryTracking = () => {
         </View>
 
         {/* Order Details Button */}
-        <TouchableOpacity style={styles.orderButton}>
+        <TouchableOpacity style={styles.orderButton} onPress={() => router.push("/screens/orderPreparing")}>
           <Text style={styles.orderButtonText}>Order Details</Text>
         </TouchableOpacity>
       </View>
