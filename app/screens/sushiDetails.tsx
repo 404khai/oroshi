@@ -117,9 +117,11 @@ export default function SushiDetails() {
         keyExtractor={(item) => item.id}
         numColumns={2}
         ListHeaderComponent={renderHeader}
-        contentContainerStyle={{ paddingBottom: 140 }}
+        ListFooterComponent={<View style={{ height: 140 }} />}
+        columnWrapperStyle={styles.columnWrapperStyle}
         showsVerticalScrollIndicator={false}
       />
+
 
       {/* Fixed bottom bar */}
       <View style={styles.footer}>
@@ -136,7 +138,7 @@ export default function SushiDetails() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#fff" },
+  container: { flex: 1, backgroundColor: '#fffdfe' },
 
   /** HERO SECTION **/
   heroContainer: {
@@ -171,6 +173,9 @@ const styles = StyleSheet.create({
       shadowRadius: 16,    // 👈 this is your blur
       elevation: 8,
   },
+  columnWrapperStyle: {
+    paddingHorizontal: 20,
+  },
 
   /** INFO CARD **/
   infoCard: {
@@ -178,11 +183,14 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 16,
     marginHorizontal: 16,
-    marginTop: -40,
-    shadowColor: "rgba(0, 0, 0, 0.3)",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 12,
+    marginTop: -70,
+    shadowColor: 'rgb(0, 0, 0, 0.3)',
+    shadowOffset: {
+        width: 0,
+        height: 4, // move shadow down
+    },
+    shadowOpacity: 0.1,  // control transparency
+    shadowRadius: 16,    // 👈 this is your blur
     elevation: 8,
   },
 
@@ -204,6 +212,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     marginTop: 10,
+
   },
   tag: {
     backgroundColor: "#F7F8FA",
@@ -219,17 +228,29 @@ const styles = StyleSheet.create({
   tabs: {
     flexDirection: "row",
     marginTop: 14,
+    paddingLeft: 20,
+    marginBottom: 20
   },
   tabButton: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
     borderRadius: 20,
     marginRight: 8,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: "#ffffff",
+    shadowColor: 'rgb(0, 0, 0, 0.3)',
+    shadowOffset: {
+        width: 0,
+        height: 4, // move shadow down
+    },
+    shadowOpacity: 0.1,  // control transparency
+    shadowRadius: 16,    // 👈 this is your blur
+    elevation: 16,
   },
-  activeTab: { backgroundColor: "#FF4B3E" },
-  tabText: { fontSize: 13, color: "#777", fontWeight: "500" },
-  activeTabText: { color: "#fff" },
+  activeTab: { 
+    backgroundColor: "#FFFFFF" 
+  },
+  tabText: { fontSize: 13, color: "#8E8E93", fontWeight: "400" },
+  activeTabText: { color: "#1C1C1E" },
 
   /** MENU ITEMS **/
   menuCard: {
@@ -238,29 +259,34 @@ const styles = StyleSheet.create({
     padding: 12,
     flex: 1,
     margin: 6,
-    shadowColor: "#000",
-    shadowOpacity: 0.05,
-    shadowOffset: { width: 0, height: 1 },
-    elevation: 2,
+    shadowColor: 'rgb(0, 0, 0, 0.3)',
+    shadowOffset: {
+        width: 0,
+        height: 4, // move shadow down
+    },
+    shadowOpacity: 0.1,  // control transparency
+    shadowRadius: 16,    // 👈 this is your blur
+    elevation: 16,
   },
   menuImage: {
-    width: "100%",
-    height: 90,
+    width: 110,
+    height: 110,
     borderRadius: 10,
     marginBottom: 8,
+    alignSelf: 'center'
   },
   menuTitle: {
     fontSize: 14,
     fontWeight: "600",
-    color: "#000",
-    marginBottom: 4,
+    color: "#1C1C1E",
+    marginBottom: 3,
   },
   menuFooter: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
   },
-  menuPrice: { fontWeight: "600", color: "#000" },
+  menuPrice: { fontWeight: "400", color: "#1C1C1E" },
   addButton: {
     backgroundColor: "#FF4B3E",
     borderRadius: 16,
@@ -285,13 +311,13 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderColor: "#eee",
   },
-  totalAmount: { fontSize: 16, fontWeight: "700", color: "#000" },
-  totalItems: { fontSize: 13, color: "#777" },
+  totalAmount: { fontSize: 16, fontWeight: "600", color: "#1C1C1E" },
+  totalItems: { fontSize: 14, color: "#8E8E93" },
   orderButton: {
     backgroundColor: "#FF4B3E",
-    borderRadius: 10,
+    borderRadius: 99,
     paddingVertical: 10,
-    paddingHorizontal: 24,
+    paddingHorizontal: 16,
   },
-  orderText: { color: "#fff", fontWeight: "600", fontSize: 15 },
+  orderText: { color: "#fff", fontWeight: "400", fontSize: 14 },
 });
