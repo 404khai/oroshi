@@ -76,7 +76,9 @@ export default function SushiDetails() {
           ))}
         </View>
 
-        {/* Tabs */}
+      </View>
+
+      {/* Tabs */}
         <View style={styles.tabs}>
           {["Nigiri", "Sashimi", "Maki", "Temaki", "Bento"].map((tab, index) => (
             <TouchableOpacity
@@ -91,7 +93,6 @@ export default function SushiDetails() {
             </TouchableOpacity>
           ))}
         </View>
-      </View>
     </>
   );
 
@@ -144,13 +145,13 @@ const styles = StyleSheet.create({
   },
   heroImage: {
     width: "100%",
-    height: 240,
-    top: 70
+    height: 280,
+    top: 60,
   },
 
   header: {
     position: "absolute",
-    top: 60,
+    top: 50,
     zIndex: 10,
     flexDirection: "row",
     justifyContent: "space-between",
@@ -173,11 +174,9 @@ const styles = StyleSheet.create({
 
   /** INFO CARD **/
   infoCard: {
-    backgroundColor: "#fff",
+    backgroundColor: "rgb(255, 255, 255)",
     borderRadius: 20,
-    paddingHorizontal: 16,
-    paddingTop: 16,
-    paddingBottom: 20,
+    padding: 16,
     marginHorizontal: 16,
     marginTop: -40,
     shadowColor: "rgba(0, 0, 0, 0.3)",
@@ -187,7 +186,7 @@ const styles = StyleSheet.create({
     elevation: 8,
   },
 
-  restaurantName: { fontSize: 20, fontWeight: "700", color: "#000" },
+  restaurantName: { fontSize: 20, fontWeight: "600", color: "#1C1C1E" },
   row: { flexDirection: "row", alignItems: "center", marginTop: 6 },
   rating: { fontWeight: "600", fontSize: 13, marginHorizontal: 4 },
   subText: { color: "#777", fontSize: 12 },
@@ -199,7 +198,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 6,
   },
   priceTier: { color: "#FF4B3E", fontWeight: "700" },
-  description: { color: "#666", marginTop: 6, fontSize: 13 },
+  description: { color: "#8E8E93", marginTop: 6, fontSize: 14 },
 
   tags: {
     flexDirection: "row",
@@ -207,14 +206,14 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   tag: {
-    backgroundColor: "#F5F5F5",
+    backgroundColor: "#F7F8FA",
     borderRadius: 8,
-    paddingHorizontal: 10,
+    paddingHorizontal: 8,
     paddingVertical: 4,
     marginRight: 8,
     marginBottom: 6,
   },
-  tagText: { color: "#777", fontSize: 12 },
+  tagText: { color: "#808087", fontSize: 12 },
 
   /** TABS **/
   tabs: {
