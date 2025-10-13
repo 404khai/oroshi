@@ -9,6 +9,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import ShieldIcon from "@/components/icons/ShieldIcon";
+import CloseIcon from "@/components/icons/CloseIcon";
 
 const orderPreparing = () => {
   const router = useRouter();
@@ -17,7 +18,7 @@ const orderPreparing = () => {
     <View style={styles.container}>
       {/* Close Button */}
       <TouchableOpacity style={styles.closeButton} onPress={() => router.push("/")}>
-        <Ionicons name="close" size={22} color="#1C1C1E" />
+        <CloseIcon />
       </TouchableOpacity>
 
       {/* Header */}
