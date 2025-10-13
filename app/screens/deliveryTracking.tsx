@@ -328,6 +328,7 @@ import ShopIcon from "@/components/icons/ShopIcon";
 import HomeIcon2 from "@/components/icons/HomeIcon2";
 import CoinIcon from "@/components/icons/CoinIcon";
 import ScooterIcon from "@/components/icons/ScooterIcon";
+import CloseIcon from "@/components/icons/CloseIcon";
 
 const deliveryTracking = () => {
   const router = useRouter()
@@ -348,7 +349,7 @@ const deliveryTracking = () => {
         {/* Top Floating Buttons */}
         <View style={styles.topButtons}>
           <TouchableOpacity style={styles.iconButton}>
-            <Ionicons name="close" size={22} color="#1C1C1E" />
+            <CloseIcon />
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.helpButton}>

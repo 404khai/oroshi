@@ -11,6 +11,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import ChatIcon from "@/components/icons/ChatIcon";
 import CallIcon2 from "@/components/icons/CallIcon2";
+import StarIcon from "@/components/icons/StarIcon";
+import CloseIcon from "@/components/icons/CloseIcon";
 
 const orderDelivered = () => {
   const router = useRouter();
@@ -23,7 +25,7 @@ const orderDelivered = () => {
     <View style={styles.container}>
       {/* Close Button */}
       <TouchableOpacity style={styles.closeButton} onPress={() => router.push("/")}>
-        <Ionicons name="close" size={22} color="#1C1C1E" />
+        <CloseIcon/>
       </TouchableOpacity>
 
       <Text style={styles.title}>Enjoy your meal!</Text>
@@ -92,15 +94,11 @@ const orderDelivered = () => {
         <Text style={styles.feedbackTitle}>How was your experience?</Text>
 
         <View style={styles.starsRow}>
-          {[1, 2, 3, 4, 5].map((i) => (
-            <TouchableOpacity key={i} onPress={() => handleRating(i)}>
-              <Ionicons
-                name={i <= rating ? "star" : "star-outline"}
-                size={28}
-                color="#FF593C"
-              />
-            </TouchableOpacity>
-          ))}
+            {[1, 2, 3, 4, 5].map((i) => (
+                <TouchableOpacity style={styles.starBg} key={i} onPress={() => handleRating(i)}>
+                    <StarIcon filled={i <= rating} />
+                </TouchableOpacity>
+            ))}
         </View>
 
         <TextInput
@@ -111,12 +109,14 @@ const orderDelivered = () => {
           value={feedback}
           onChangeText={setFeedback}
         />
+
+        {/* Order Details Button */}
+        <TouchableOpacity style={styles.orderButton}>
+            <Text style={styles.orderButtonText}>Order Details</Text>
+        </TouchableOpacity>
       </View>
 
-      {/* Order Details Button */}
-      <TouchableOpacity style={styles.orderButton}>
-        <Text style={styles.orderButtonText}>Order Details</Text>
-      </TouchableOpacity>
+      
     </View>
   );
 };
@@ -133,14 +133,21 @@ const styles = StyleSheet.create({
   closeButton: {
     width: 40,
     height: 40,
+    padding: 10,
+    backgroundColor: "#FFFFFF",
     borderRadius: 50,
-    backgroundColor: "#F7F7F7",
-    justifyContent: "center",
-    alignItems: "center",
+    shadowColor: 'rgb(0, 0, 0, 0.3)',
+    shadowOffset: {
+        width: 0,
+        height: 4, // move shadow down
+    },
+    shadowOpacity: 0.1,  // control transparency
+    shadowRadius: 16,    // 👈 this is your blur
+    elevation: 8,
   },
   title: {
-    fontSize: 20,
-    fontWeight: "600",
+    fontSize: 18,
+    fontWeight: 600,
     color: "#1C1C1E",
     marginTop: 20,
     marginBottom: 16,
@@ -149,10 +156,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     borderRadius: 16,
     padding: 16,
-    shadowColor: "#000",
-    shadowOpacity: 0.06,
-    shadowRadius: 8,
-    elevation: 2,
+    shadowColor: 'rgb(0, 0, 0, 0.3)',
+    shadowOffset: {
+        width: 0,
+        height: 4, // move shadow down
+    },
+    shadowOpacity: 0.1,  // control transparency
+    shadowRadius: 16,    // 👈 this is your blur
+    elevation: 8,
     marginBottom: 20,
   },
   orderHeader: {
@@ -172,11 +183,11 @@ const styles = StyleSheet.create({
   },
   restaurantName: {
     fontSize: 14,
-    fontWeight: "600",
+    fontWeight: 600,
     color: "#1C1C1E",
   },
   orderTag: {
-    backgroundColor: "#FFF0ED",
+    backgroundColor: "#FFF2F2",
     borderRadius: 8,
     paddingHorizontal: 8,
     paddingVertical: 4,
@@ -184,7 +195,7 @@ const styles = StyleSheet.create({
   orderTagText: {
     color: "#FF593C",
     fontSize: 12,
-    fontWeight: "600",
+    fontWeight: 400,
   },
   totalPaid: {
     color: "#8E8E93",
@@ -192,8 +203,8 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   orderStatus: {
-    fontSize: 16,
-    fontWeight: "600",
+    fontSize: 20,
+    fontWeight: 600,
     color: "#1C1C1E",
     marginTop: 2,
   },
@@ -208,10 +219,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     borderRadius: 16,
     padding: 16,
-    shadowColor: "#000",
-    shadowOpacity: 0.06,
-    shadowRadius: 8,
-    elevation: 2,
+    shadowColor: 'rgb(0, 0, 0, 0.3)',
+    shadowOffset: {
+        width: 0,
+        height: 4, // move shadow down
+    },
+    shadowOpacity: 0.1,  // control transparency
+    shadowRadius: 16,    // 👈 this is your blur
+    elevation: 8,
     marginBottom: 20,
   },
   infoRow: {
@@ -220,13 +235,14 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   infoLabel: {
-    color: "#8E8E93",
-    fontSize: 14,
-  },
-  infoValue: {
     color: "#1C1C1E",
     fontSize: 14,
-    fontWeight: "500",
+    fontWeight: 600
+  },
+  infoValue: {
+    color: "#8E8E93",
+    fontSize: 14,
+    fontWeight: "400",
   },
   delivererRow: {
     alignItems: "center",
@@ -242,13 +258,14 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   deliveredBy: {
-    fontSize: 14,
-    color: "#8E8E93",
+    fontSize: 16,
+    fontWeight: 600,
+    color: "#1C1C1E",
   },
   delivererName: {
     fontSize: 14,
-    color: "#1C1C1E",
-    fontWeight: "600",
+    color: "#8E8E93",
+    fontWeight: "400",
   },
   contactButtons: {
     flexDirection: "row",
@@ -263,14 +280,18 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     borderRadius: 16,
     padding: 16,
-    shadowColor: "#000",
-    shadowOpacity: 0.06,
-    shadowRadius: 8,
-    elevation: 2,
+    shadowColor: 'rgb(0, 0, 0, 0.3)',
+    shadowOffset: {
+        width: 0,
+        height: 4, // move shadow down
+    },
+    shadowOpacity: 0.1,  // control transparency
+    shadowRadius: 16,    // 👈 this is your blur
+    elevation: 8,
     marginBottom: 20,
   },
   feedbackTitle: {
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: "600",
     color: "#1C1C1E",
     marginBottom: 12,
@@ -280,26 +301,34 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginBottom: 12,
   },
+  starBg:{
+    backgroundColor: '#F7F8FA',
+    padding: 4,
+    borderRadius: 8,
+    width: 40,
+    height: 40
+  },
   textInput: {
     borderWidth: 1,
     borderColor: "#FF593C",
     borderRadius: 12,
     padding: 10,
     fontSize: 14,
-    color: "#1C1C1E",
+    color: "#8E8E93",
     height: 80,
     textAlignVertical: "top",
+    marginBottom: 16,
   },
   orderButton: {
     backgroundColor: "#FF593C",
     borderRadius: 99,
-    paddingVertical: 14,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
     alignItems: "center",
-    marginBottom: 30,
   },
   orderButtonText: {
     color: "#fff",
-    fontSize: 15,
-    fontWeight: "500",
+    fontSize: 14,
+    fontWeight: "400",
   },
 });

@@ -5,12 +5,13 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
-  ScrollView,
   FlatList,
   SafeAreaView,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import BackArrowIcon from "@/components/icons/BackArrowIcon";
+import HeartIcon from "@/components/icons/HeartIcon";
 
 interface MenuItem {
   id: string;
@@ -26,29 +27,32 @@ const menuItems: MenuItem[] = [
   { id: "4", name: "Salmon Sashimi", price: "$10.00", image: require("../../assets/images/salmonSashimi.png") },
 ];
 
-const router = useRouter()
+export default function SushiDetails() {
+  const router = useRouter();
 
-export default function sushiDetails () {
-  return (
-    <SafeAreaView style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <TouchableOpacity>
-          <Ionicons name="chevron-back" size={24} color="#000" />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Ionicons name="heart-outline" size={24} color="#000" />
-        </TouchableOpacity>
+  const renderHeader = () => (
+    <>
+      {/* Hero section with bg color */}
+      <View style={styles.heroContainer}>
+        {/* Top header icons */}
+        <View style={styles.header}>
+          <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+            <BackArrowIcon />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.backButton}>
+            <HeartIcon/>
+          </TouchableOpacity>
+        </View>
+
+        {/* Hero image */}
+        <Image
+          source={require("../../assets/images/sushiHero.png")}
+          style={styles.heroImage}
+          resizeMode="cover"
+        />
       </View>
 
-      {/* Hero Image */}
-      <Image
-        source={require("../../assets/images/sushiHero.png")}
-        style={styles.heroImage}
-        resizeMode="cover"
-      />
-
-      {/* Floating Card */}
+      {/* Floating info card */}
       <View style={styles.infoCard}>
         <Text style={styles.restaurantName}>Sakura Sushi</Text>
         <View style={styles.row}>
@@ -71,15 +75,10 @@ export default function sushiDetails () {
             </View>
           ))}
         </View>
+
       </View>
 
-      {/* Scrollable Content */}
-      <ScrollView
-        style={styles.scrollArea}
-        contentContainerStyle={{ paddingBottom: 130 }}
-        showsVerticalScrollIndicator={false}
-      >
-        {/* Tabs */}
+      {/* Tabs */}
         <View style={styles.tabs}>
           {["Nigiri", "Sashimi", "Maki", "Temaki", "Bento"].map((tab, index) => (
             <TouchableOpacity
@@ -94,28 +93,35 @@ export default function sushiDetails () {
             </TouchableOpacity>
           ))}
         </View>
+    </>
+  );
 
-        {/* Menu Items */}
-        <FlatList
-          data={menuItems}
-          numColumns={2}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <View style={styles.menuCard}>
-              <Image source={item.image} style={styles.menuImage} />
-              <Text style={styles.menuTitle}>{item.name}</Text>
-              <View style={styles.menuFooter}>
-                <Text style={styles.menuPrice}>{item.price}</Text>
-                <TouchableOpacity style={styles.addButton}>
-                  <Ionicons name="add" size={20} color="#fff" />
-                </TouchableOpacity>
-              </View>
-            </View>
-          )}
-        />
-      </ScrollView>
+  const renderItem = ({ item }: { item: MenuItem }) => (
+    <View style={styles.menuCard}>
+      <Image source={item.image} style={styles.menuImage} />
+      <Text style={styles.menuTitle}>{item.name}</Text>
+      <View style={styles.menuFooter}>
+        <Text style={styles.menuPrice}>{item.price}</Text>
+        <TouchableOpacity style={styles.addButton}>
+          <Ionicons name="add" size={20} color="#fff" />
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
 
-      {/* Fixed Bottom Bar */}
+  return (
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={menuItems}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+        numColumns={2}
+        ListHeaderComponent={renderHeader}
+        contentContainerStyle={{ paddingBottom: 140 }}
+        showsVerticalScrollIndicator={false}
+      />
+
+      {/* Fixed bottom bar */}
       <View style={styles.footer}>
         <View>
           <Text style={styles.totalAmount}>$25.00</Text>
@@ -131,44 +137,57 @@ export default function sushiDetails () {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#fff" },
+
+  /** HERO SECTION **/
+  heroContainer: {
+    width: "100%",
+    backgroundColor: "#FFEFE3",
+  },
+  heroImage: {
+    width: "100%",
+    height: 280,
+    top: 60,
+  },
+
   header: {
     position: "absolute",
-    top: 40,
+    top: 50,
     zIndex: 10,
     flexDirection: "row",
     justifyContent: "space-between",
     width: "100%",
     paddingHorizontal: 16,
   },
-  heroImage: {
-    width: "100%",
-    height: 250,
+  backButton: {
+    padding: 10,
+      backgroundColor: "#FFFFFF",
+      borderRadius: 50,
+      shadowColor: 'rgb(0, 0, 0, 0.3)',
+      shadowOffset: {
+          width: 0,
+          height: 4, // move shadow down
+      },
+      shadowOpacity: 0.1,  // control transparency
+      shadowRadius: 16,    // 👈 this is your blur
+      elevation: 8,
   },
+
+  /** INFO CARD **/
   infoCard: {
-    backgroundColor: "#fff",
-    borderRadius: 16,
+    backgroundColor: "rgb(255, 255, 255)",
+    borderRadius: 20,
     padding: 16,
     marginHorizontal: 16,
     marginTop: -40,
-    shadowColor: 'rgb(0, 0, 0, 0.3)',
-    shadowOffset: {
-        width: 0,
-        height: 4, // move shadow down
-    },
-    shadowOpacity: 0.1,  // control transparency
-    shadowRadius: 16,    // 👈 this is your blur
-    elevation: 8, 
+    shadowColor: "rgba(0, 0, 0, 0.3)",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 12,
+    elevation: 8,
   },
-  restaurantName: {
-    fontSize: 20,
-    fontWeight: "700",
-    color: "#000",
-  },
-  row: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginTop: 6,
-  },
+
+  restaurantName: { fontSize: 20, fontWeight: "600", color: "#1C1C1E" },
+  row: { flexDirection: "row", alignItems: "center", marginTop: 6 },
   rating: { fontWeight: "600", fontSize: 13, marginHorizontal: 4 },
   subText: { color: "#777", fontSize: 12 },
   dot: {
@@ -179,33 +198,27 @@ const styles = StyleSheet.create({
     marginHorizontal: 6,
   },
   priceTier: { color: "#FF4B3E", fontWeight: "700" },
-  description: {
-    color: "#666",
-    marginTop: 6,
-    fontSize: 13,
-  },
+  description: { color: "#8E8E93", marginTop: 6, fontSize: 14 },
+
   tags: {
     flexDirection: "row",
     flexWrap: "wrap",
     marginTop: 10,
   },
   tag: {
-    backgroundColor: "#F5F5F5",
+    backgroundColor: "#F7F8FA",
     borderRadius: 8,
-    paddingHorizontal: 10,
+    paddingHorizontal: 8,
     paddingVertical: 4,
     marginRight: 8,
     marginBottom: 6,
   },
-  tagText: { color: "#777", fontSize: 12 },
-  scrollArea: {
-    flex: 1,
-    paddingHorizontal: 16,
-    marginTop: 16,
-  },
+  tagText: { color: "#808087", fontSize: 12 },
+
+  /** TABS **/
   tabs: {
     flexDirection: "row",
-    marginBottom: 16,
+    marginTop: 14,
   },
   tabButton: {
     paddingHorizontal: 12,
@@ -214,17 +227,11 @@ const styles = StyleSheet.create({
     marginRight: 8,
     backgroundColor: "#F5F5F5",
   },
-  activeTab: {
-    backgroundColor: "#FF4B3E",
-  },
-  tabText: {
-    fontSize: 13,
-    color: "#777",
-    fontWeight: "500",
-  },
-  activeTabText: {
-    color: "#fff",
-  },
+  activeTab: { backgroundColor: "#FF4B3E" },
+  tabText: { fontSize: 13, color: "#777", fontWeight: "500" },
+  activeTabText: { color: "#fff" },
+
+  /** MENU ITEMS **/
   menuCard: {
     backgroundColor: "#fff",
     borderRadius: 16,
@@ -253,10 +260,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
   },
-  menuPrice: {
-    fontWeight: "600",
-    color: "#000",
-  },
+  menuPrice: { fontWeight: "600", color: "#000" },
   addButton: {
     backgroundColor: "#FF4B3E",
     borderRadius: 16,
@@ -265,6 +269,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+
+  /** FOOTER **/
   footer: {
     position: "absolute",
     bottom: 0,
