@@ -33,7 +33,7 @@ const orderDelivered = () => {
         <View style={styles.orderHeader}>
           <View style={styles.restaurantInfo}>
             <Image
-              source={require("@/assets/images/sushiIcon.png")} // Replace with your asset
+              source={require("@/assets/images/restaurantLogo.png")} // Replace with your asset
               style={styles.restaurantIcon}
             />
             <Text style={styles.restaurantName}>Sakura Sushi</Text>
@@ -47,7 +47,7 @@ const orderDelivered = () => {
         <Text style={styles.orderStatus}>Order delivered</Text>
 
         <Image
-          source={require("@/assets/images/sushi.png")} // Replace with your asset
+          source={require("@/assets/images/food.png")} // Replace with your asset
           style={styles.foodImage}
         />
       </View>

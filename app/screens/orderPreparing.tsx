@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import ShieldIcon from "@/components/icons/ShieldIcon";
 
 const orderPreparing = () => {
   const router = useRouter();
@@ -27,7 +28,7 @@ const orderPreparing = () => {
         <View style={styles.orderHeader}>
           <View style={styles.restaurantInfo}>
             <Image
-              source={require("@/assets/images/placeholder-restaurant.png")} // Placeholder
+              source={require("@/assets/images/restaurantLogo.png")} // Placeholder
               style={styles.restaurantIcon}
             />
             <Text style={styles.restaurantName}>Sakura Sushi</Text>
@@ -42,7 +43,7 @@ const orderPreparing = () => {
         <Text style={styles.estimatedTime}>30–49 minutes</Text>
 
         <Image
-          source={require("@/assets/images/placeholder-food.png")} // Placeholder
+          source={require("@/assets/images/food.png")} // Placeholder
           style={styles.foodImage}
         />
       </View>
@@ -50,7 +51,7 @@ const orderPreparing = () => {
       {/* Preparing Info Card */}
       <View style={styles.statusCard}>
         <View style={styles.statusRow}>
-          <Ionicons name="thumbs-up" size={18} color="#FF593C" />
+          <Text>👍</Text>
           <Text style={styles.statusText}>
             Sakura Sushi is preparing your order. Fresh rolls are on the way!
           </Text>
@@ -64,20 +65,22 @@ const orderPreparing = () => {
           <Text style={styles.promoSubtitle}>
             Get more exclusive deals and discounts.
           </Text>
-          <TouchableOpacity style={styles.exploreButton}>
+          <TouchableOpacity style={styles.exploreButton} onPress={() => router.push("/screens/orderDelivered")}>
             <Text style={styles.exploreButtonText}>Explore Now</Text>
           </TouchableOpacity>
         </View>
 
         <Image
-          source={require("@/assets/images/placeholder-rider.png")} // Placeholder
+          source={require("@/assets/images/rider.png")} // Placeholder
           style={styles.promoImage}
         />
       </View>
 
       {/* Delivery Info */}
       <View style={styles.deliveryRow}>
-        <View style={styles.deliveryDot} />
+        <View style={styles.deliveryDot}>
+            <ShieldIcon/>
+        </View>
         <View>
           <Text style={styles.deliveryLabel}>Delivering to</Text>
           <Text style={styles.deliveryText}>Home, Expected in 25 mins</Text>
@@ -99,13 +102,20 @@ const styles = StyleSheet.create({
   closeButton: {
     width: 40,
     height: 40,
+    padding: 10,
+    backgroundColor: "#FFFFFF",
     borderRadius: 50,
-    backgroundColor: "#F7F7F7",
-    justifyContent: "center",
-    alignItems: "center",
+    shadowColor: 'rgb(0, 0, 0, 0.3)',
+    shadowOffset: {
+        width: 0,
+        height: 4, // move shadow down
+    },
+    shadowOpacity: 0.1,  // control transparency
+    shadowRadius: 16,    // 👈 this is your blur
+    elevation: 8,
   },
   title: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: "600",
     color: "#1C1C1E",
     marginTop: 20,
@@ -115,10 +125,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     borderRadius: 16,
     padding: 16,
-    shadowColor: "#000",
-    shadowOpacity: 0.06,
-    shadowRadius: 8,
-    elevation: 2,
+    shadowColor: 'rgb(0, 0, 0, 0.3)',
+    shadowOffset: {
+        width: 0,
+        height: 4, // move shadow down
+    },
+    shadowOpacity: 0.1,  // control transparency
+    shadowRadius: 16,    // 👈 this is your blur
+    elevation: 8,
     marginBottom: 20,
     position: "relative",
   },
@@ -144,7 +158,7 @@ const styles = StyleSheet.create({
     color: "#1C1C1E",
   },
   orderTag: {
-    backgroundColor: "#FFF0ED",
+    backgroundColor: "#FFF2F2",
     borderRadius: 8,
     paddingHorizontal: 8,
     paddingVertical: 4,
@@ -152,16 +166,16 @@ const styles = StyleSheet.create({
   orderTagText: {
     color: "#FF593C",
     fontSize: 12,
-    fontWeight: "600",
+    fontWeight: "400",
   },
   estimatedLabel: {
     color: "#8E8E93",
-    fontSize: 13,
+    fontSize: 14,
     marginTop: 10,
   },
   estimatedTime: {
     fontSize: 20,
-    fontWeight: "700",
+    fontWeight: "600",
     color: "#1C1C1E",
     marginTop: 4,
   },
@@ -173,23 +187,23 @@ const styles = StyleSheet.create({
     bottom: 16,
   },
   statusCard: {
-    backgroundColor: "#FFF6F2",
-    borderRadius: 12,
+    backgroundColor: "#FFEFE3",
+    borderRadius: 16,
     padding: 12,
     marginBottom: 20,
   },
   statusRow: {
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "flex-start",
     gap: 8,
   },
   statusText: {
-    color: "#FF593C",
-    fontSize: 13.5,
+    color: "#8E8E93",
+    fontSize: 14,
     flex: 1,
   },
   promoCard: {
-    backgroundColor: "#F5F3FF",
+    backgroundColor: "#EFEFFF",
     borderRadius: 16,
     padding: 16,
     flexDirection: "row",
@@ -203,34 +217,31 @@ const styles = StyleSheet.create({
   },
   promoTitle: {
     color: "#1C1C1E",
-    fontSize: 15,
-    fontWeight: "700",
+    fontSize: 14,
+    fontWeight: 600,
     marginBottom: 4,
   },
   promoSubtitle: {
-    color: "#6C6C6C",
-    fontSize: 13,
+    color: "#8E8E93",
+    fontSize: 14,
     marginBottom: 10,
   },
   exploreButton: {
     backgroundColor: "#FFFFFF",
     borderRadius: 50,
-    paddingVertical: 6,
+    paddingVertical: 4,
     paddingHorizontal: 12,
     alignSelf: "flex-start",
-    borderWidth: 1,
-    borderColor: "#E3E3E3",
   },
   exploreButtonText: {
     color: "#1C1C1E",
-    fontSize: 13,
-    fontWeight: "500",
+    fontSize: 12,
+    fontWeight: 400,
   },
   promoImage: {
     width: 80,
     height: 80,
     resizeMode: "contain",
-    backgroundColor: "#EAEAEA",
     borderRadius: 10,
   },
   deliveryRow: {
@@ -238,23 +249,27 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 30,
     marginTop: 10,
+    bottom: -200,
+    position: 'relative',
     gap: 12,
   },
   deliveryDot: {
-    width: 20,
-    height: 20,
+    width: 40,
+    height: 40,
+
     borderRadius: 50,
-    backgroundColor: "#FFF6F2",
+    backgroundColor: "#F7F8FA",
+    display: 'flex',
     justifyContent: "center",
     alignItems: "center",
   },
   deliveryLabel: {
-    fontSize: 13,
+    fontSize: 14,
     color: "#8E8E93",
   },
   deliveryText: {
-    fontSize: 15,
-    fontWeight: "600",
+    fontSize: 16,
+    fontWeight: 600,
     color: "#1C1C1E",
   },
 });
